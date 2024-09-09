@@ -1,0 +1,10 @@
+---
+title: "D2SC ICMA Notebook"
+output: html_notebook
+author: "Abhi Patel"
+date: "`r Sys.Date()`"
+---
+#ICMA Sept 9 2024
+```{r}
+plot(cars)
+```

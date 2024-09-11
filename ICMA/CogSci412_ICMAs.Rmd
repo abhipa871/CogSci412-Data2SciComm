@@ -8,3 +8,29 @@ date: "`r Sys.Date()`"
 ```{r}
 plot(cars)
 ```
+#ICMA Sept 11 2024
+This is where we put plain text.
+```{r}
+#this is where we put r code
+fave_number<-12
+print(fave_number)
+`1number1`<-15
+print(`1number1`)
+ohno_this_is_a_nightmare<-"hello"
+
+```
+```{r}
+2+2
+```
+
+```{r}
+x<-2+2
+```
+```{r}
+help(c)
+my_vector<-c(2,3,4.666668)
+mean(my_vector)
+```
+```{r}
+sd(1:2)^2
+```

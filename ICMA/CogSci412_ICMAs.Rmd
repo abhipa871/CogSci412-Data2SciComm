@@ -4,11 +4,11 @@ output: html_notebook
 author: "Abhi Patel"
 date: "`r Sys.Date()`"
 ---
-#ICMA Sept 9 2024
+# ICMA Sept 9 2024
 ```{r}
 plot(cars)
 ```
-#ICMA Sept 11 2024
+# ICMA Sept 11 2024
 This is where we put plain text.
 ```{r}
 #this is where we put r code
@@ -33,4 +33,16 @@ mean(my_vector)
 ```
 ```{r}
 sd(1:2)^2
+```
+# ICMA Sept 16 2924
+```{r}
+library(tidyverse)
+getwd()
+mtcars%>%
+  rownames_to_column()%>%
+  write_csv("mtcars_fromR_rownames.csv")
+```
+```{r}
+mtcars_read<-read_csv("mtcars_fromR_rownames.csv")
+mtcars_read
 ```

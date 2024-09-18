@@ -46,3 +46,41 @@ mtcars%>%
 mtcars_read<-read_csv("mtcars_fromR_rownames.csv")
 mtcars_read
 ```
+# ICMA Sept 18 2024
+```{r}
+library(tidyverse)
+```
+```{r}
+?ChickWeight
+glimpse(ChickWeight)
+```
+```{r}
+chick_clean<-ChickWeight%>%
+  select(chick_id = Chick, diet = Diet, age_days = Time, weight_gm = weight)
+print(chick_clean)
+```
+```{r}
+chick_clean%>%
+  distinct(chick_id)
+```
+```{r}
+chick_clean%>%
+  mutate(weight_lbs = weight_gm/453.6) %>%
+  group_by(diet,age_days)%>%
+  summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))%>%
+  filter(age_days==20)
+```
+```{r}
+chick_clean%>%
+  filter(age_days==20)%>%
+  mutate(weight_lbs = weight_gm/453.6)%>%
+  group_by(diet)%>%
+  summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))
+
+```
+```{r}
+mtcars_modified<-read_csv("data/mtcars_fromR_rownames.csv")
+```
+```{r}
+glimpse(mtcars_modified)
+```

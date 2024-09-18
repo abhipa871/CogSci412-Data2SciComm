@@ -11,7 +11,7 @@
 
 <meta name="author" content="Abhi Patel" />
 
-<meta name="date" content="2024-09-16" />
+<meta name="date" content="2024-09-18" />
 
 <title>D2SC ICMA Notebook</title>
 
@@ -1750,7 +1750,7 @@ display: none;
 
 <h1 class="title toc-ignore">D2SC ICMA Notebook</h1>
 <h4 class="author">Abhi Patel</h4>
-<h4 class="date">2024-09-16</h4>
+<h4 class="date">2024-09-18</h4>
 
 </div>
 
@@ -1839,33 +1839,108 @@ mean(my_vector)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXRjYXJzX3JlYWQ8LXJlYWRfY3N2KFwibXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>mtcars_read&lt;-read_csv(&quot;mtcars_fromR_rownames.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXRjYXJzX3JlYWQ8LXJlYWRfY3N2KFwibXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdlwiKVxubXRjYXJzX3JlYWRcbmBgYCJ9 -->
+<pre class="r"><code>mtcars_read&lt;-read_csv(&quot;mtcars_fromR_rownames.csv&quot;)
+mtcars_read</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzIgQ29sdW1uczogMTJcbuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAgKDEpOiByb3duYW1lXG5kYmwgKDExKTogbXBnLCBjeWwsIGRpc3AsIGhwLCBkcmF0LCB3dCwgcXNlYywgdnMsIGFtLCBnZWFyLCBjYXJiXG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 32 Columns: 12
-── Column specification ───────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): rowname
-dbl (11): mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXRjYXJzX3JlYWRcbmBgYCJ9 -->
-<pre class="r"><code>mtcars_read</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjozMiwibmNvbCI6MTIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMzIgw5cgMTIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCcTFYVFd3YlJSVGUySTRUTzQ3amtrU2lsN0lIRGdWaHgzOEpMbEF5NENTRUtoVnBVcEtvalNxTjdVMjhkTE96bVYwN1RWcWtYSHF1T0JaeFFDcEgxQU5jY3F5b3hJbEtjT29OdFJjdUZDa1NLZ0lrRW5aMzN0dlVFOXdZd2tqT20vZTl2Kys5V1djOWN4TkxoZmhTWEZHVXNCS0pkQ25oYm5lcmRIOTRjU3BkVXBSSXlGVzZsSWdTOCtRMTEyblEzU1RjVDhyOXFHQ0luYWRiTmFyT0xSVUI2QThBZFpHdUFoaWZvSTdkTU5YWGMxbEFrdE9NbTVxakZ0VUpyamMxUUU4QU9tOHg3dEFLYXpoZzZGbWdoazVOSjhqWHNCMk5xNFd4Yk1CRDQxVTFYOHhPQU5BcmdFSzJWUzlKQWFWc0dYUDZRSEUwT3o5NUNKa0JwTzhBd2JBWHlyU21Hd2F0cWxPR3Bqa2JqTlhBTWppam0xVm1tR3FabVk1dWFxWkREZXl6WE9lYnR1RjI4UDZhcFhFOU1QUk82ZFJSYy9rU0ZweG1wanZOc3Q3VXF6aTVpMnlUT1M3R09IUHI0dGlmUVUwRVV4T3N0cXFwNVRvMURNMWMxVGhtZmVkOFdUMUhtNXFobTlocm1hNVJ6dFJMUWVuVXJFZmI2MHZuV2tYbjJGYk1wN2lVUzUvQjByT00yOVc2cHA3SkZkTjVBQk16ekduWTZtU0RNd3ZwSktjWXI2bXo3akZxbktvNDA4U1V4am5sdWpxaG0remdJYkpkSDBkWDMyVWN3K01MekdneU5WZk1UM3JKdkllUWpDcitDdVRZZDk1NlFFWlgvRVh5WHhlOFJmSW5iN3ZyVS9MYWJTRkxZRWYvZ2xna0Izb1c3TGtab1dkQWZ4bnNLTk9BUXdMeU51cS9DbjEwVy9BYUFYNlk1MVhnZ1hYZmhEcHZnQi9tR1VFLzZDT0QvUXA3TUljWEFVZVprblMxalo1cTR5LzdkU3JsZkxMOHIvRkg4RmR3RGpYQVVWNEdhWWtBMHR3VzBwRDB5b0tZTjRWNTErRDhVSzYvSmM1SGxoOUQvSTE3UWw0SGZmNUxZWjk3SXVTRmIwWCtLMUVoN1VmQ3p3WitEZEEzUVorSGZGY0dSZjFGaUcvc0FsL2d6NzhIUDlJNmg4dkFBK1VpYWRVMXFIY0pjUE56SVQrQStvdFlYNUlyMi84c2RZai9DUElhNEQ4TDluT1FkeGJxTFlHczNHdVZ5QVA1WWZ3QzJKY2h6cEw2Y0hhaFAyRlhjQTREOFAxQ21ZVHZiZStkaC9HejFoY2tCbmgwYU92eGUzZUhTT3l1dnlIOU4wL3RYUGo1SmhsWVB2MzBtMXZMaDJUdkxYOXpTUFpZWHVKMTBndjl4cnd5ZHg2U2xKdnMxTTRjR2R6eE55VGxWZHQ2VFByaGVRdnFBNTkraUVPZUdIOEM0cE0ralZlQ1BBbFBQZjBiU1lCZlN2QUk1aEFCZXcvd0NnSGZHT1RyZzM3N29QOEUyZ0ZIWG9FZnlKUmZmanJnbXp6ckZ5YkRVR2Y0cTNSeUlYS1NERlBCczB2ME8vNkg4Qi8vQytZWkJoNEo2S3ZQSDhkMWtzUitQZnBQNzQvdlFSOWRmdm1YeG44ZkhiL3h5eWQxRW9NOFVZaEgvbEhCSjVoRHRpSGljOTJDZi80ekVWZUFjME84V0JKMVIyQWVSZWhuN0NkNHI4RC82enpvT1h4ZndIbm13VC8zcCtnajk0TTRsOXhWYjNCUFNPR2F5SitIT1JZZ1Q5RS9tUHNrKzZQZjM4SDdCK01UclhXejhGN0lncDZHdXZpK1NjTzU1UVV2bklNaXJmSGRWaW5qN2Z6YXhYVzZqcHZ2S0w3UDhmZm44SC8xY2R4MVhCNUh6ZkU1K2NYM0lpV1VRN0wzQ05rdXJ0UDRUdlA5Mi9paERpWDRLMjNtSU0rTEtKS2Vhc1VEMlNsLzJVK3FLOWVUOFVQMVpIN3QvT1RmVVFxdWxsdGZ0MG5YTk84bmloZVd3S3NZWnhzZURtcDR6Y0piWHJpNmlmZVlTRTIzTGRpSDZsYUF1ci9wRWQzQVhXVGQxdkJ5RTJyYXVLTnJhRi9WS041Y0lsWEtLeExMbUVzb2cwejd2ZEJ0OTgvKy92NGp1WjJxUVcxc0I4RjRqVG8wczhLOWpoUmxUd3JwWVphak05TU5Dbm0zMzZnVTNNVWxZS0JoZWt4cTZXcTlZVjVORnlSejJESlh2Wm8rSkZZLzdOVm45Z25CSXJRUDRWRUlqN3FYT1BjaWllMFl0S0xod01NMXJZblhMRGdnTzJOeC9lREs3S0oyeG1FSGw5QzRlemxGeE85YzJmc2JPdUpUN3hJUUFBQT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["rowname"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"Mazda RX4","2":"21.0","3":"6","4":"160.0","5":"110","6":"3.90","7":"2.620","8":"16.46","9":"0","10":"1","11":"4","12":"4"},{"1":"Mazda RX4 Wag","2":"21.0","3":"6","4":"160.0","5":"110","6":"3.90","7":"2.875","8":"17.02","9":"0","10":"1","11":"4","12":"4"},{"1":"Datsun 710","2":"22.8","3":"4","4":"108.0","5":"93","6":"3.85","7":"2.320","8":"18.61","9":"1","10":"1","11":"4","12":"1"},{"1":"Hornet 4 Drive","2":"21.4","3":"6","4":"258.0","5":"110","6":"3.08","7":"3.215","8":"19.44","9":"1","10":"0","11":"3","12":"1"},{"1":"Hornet Sportabout","2":"18.7","3":"8","4":"360.0","5":"175","6":"3.15","7":"3.440","8":"17.02","9":"0","10":"0","11":"3","12":"2"},{"1":"Valiant","2":"18.1","3":"6","4":"225.0","5":"105","6":"2.76","7":"3.460","8":"20.22","9":"1","10":"0","11":"3","12":"1"},{"1":"Duster 360","2":"14.3","3":"8","4":"360.0","5":"245","6":"3.21","7":"3.570","8":"15.84","9":"0","10":"0","11":"3","12":"4"},{"1":"Merc 240D","2":"24.4","3":"4","4":"146.7","5":"62","6":"3.69","7":"3.190","8":"20.00","9":"1","10":"0","11":"4","12":"2"},{"1":"Merc 230","2":"22.8","3":"4","4":"140.8","5":"95","6":"3.92","7":"3.150","8":"22.90","9":"1","10":"0","11":"4","12":"2"},{"1":"Merc 280","2":"19.2","3":"6","4":"167.6","5":"123","6":"3.92","7":"3.440","8":"18.30","9":"1","10":"0","11":"4","12":"4"},{"1":"Merc 280C","2":"17.8","3":"6","4":"167.6","5":"123","6":"3.92","7":"3.440","8":"18.90","9":"1","10":"0","11":"4","12":"4"},{"1":"Merc 450SE","2":"16.4","3":"8","4":"275.8","5":"180","6":"3.07","7":"4.070","8":"17.40","9":"0","10":"0","11":"3","12":"3"},{"1":"Merc 450SL","2":"17.3","3":"8","4":"275.8","5":"180","6":"3.07","7":"3.730","8":"17.60","9":"0","10":"0","11":"3","12":"3"},{"1":"Merc 450SLC","2":"15.2","3":"8","4":"275.8","5":"180","6":"3.07","7":"3.780","8":"18.00","9":"0","10":"0","11":"3","12":"3"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8","4":"472.0","5":"205","6":"2.93","7":"5.250","8":"17.98","9":"0","10":"0","11":"3","12":"4"},{"1":"Lincoln Continental","2":"10.4","3":"8","4":"460.0","5":"215","6":"3.00","7":"5.424","8":"17.82","9":"0","10":"0","11":"3","12":"4"},{"1":"Chrysler Imperial","2":"14.7","3":"8","4":"440.0","5":"230","6":"3.23","7":"5.345","8":"17.42","9":"0","10":"0","11":"3","12":"4"},{"1":"Fiat 128","2":"32.4","3":"4","4":"78.7","5":"66","6":"4.08","7":"2.200","8":"19.47","9":"1","10":"1","11":"4","12":"1"},{"1":"Honda Civic","2":"30.4","3":"4","4":"75.7","5":"52","6":"4.93","7":"1.615","8":"18.52","9":"1","10":"1","11":"4","12":"2"},{"1":"Toyota Corolla","2":"33.9","3":"4","4":"71.1","5":"65","6":"4.22","7":"1.835","8":"19.90","9":"1","10":"1","11":"4","12":"1"},{"1":"Toyota Corona","2":"21.5","3":"4","4":"120.1","5":"97","6":"3.70","7":"2.465","8":"20.01","9":"1","10":"0","11":"3","12":"1"},{"1":"Dodge Challenger","2":"15.5","3":"8","4":"318.0","5":"150","6":"2.76","7":"3.520","8":"16.87","9":"0","10":"0","11":"3","12":"2"},{"1":"AMC Javelin","2":"15.2","3":"8","4":"304.0","5":"150","6":"3.15","7":"3.435","8":"17.30","9":"0","10":"0","11":"3","12":"2"},{"1":"Camaro Z28","2":"13.3","3":"8","4":"350.0","5":"245","6":"3.73","7":"3.840","8":"15.41","9":"0","10":"0","11":"3","12":"4"},{"1":"Pontiac Firebird","2":"19.2","3":"8","4":"400.0","5":"175","6":"3.08","7":"3.845","8":"17.05","9":"0","10":"0","11":"3","12":"2"},{"1":"Fiat X1-9","2":"27.3","3":"4","4":"79.0","5":"66","6":"4.08","7":"1.935","8":"18.90","9":"1","10":"1","11":"4","12":"1"},{"1":"Porsche 914-2","2":"26.0","3":"4","4":"120.3","5":"91","6":"4.43","7":"2.140","8":"16.70","9":"0","10":"1","11":"5","12":"2"},{"1":"Lotus Europa","2":"30.4","3":"4","4":"95.1","5":"113","6":"3.77","7":"1.513","8":"16.90","9":"1","10":"1","11":"5","12":"2"},{"1":"Ford Pantera L","2":"15.8","3":"8","4":"351.0","5":"264","6":"4.22","7":"3.170","8":"14.50","9":"0","10":"1","11":"5","12":"4"},{"1":"Ferrari Dino","2":"19.7","3":"6","4":"145.0","5":"175","6":"3.62","7":"2.770","8":"15.50","9":"0","10":"1","11":"5","12":"6"},{"1":"Maserati Bora","2":"15.0","3":"8","4":"301.0","5":"335","6":"3.54","7":"3.570","8":"14.60","9":"0","10":"1","11":"5","12":"8"},{"1":"Volvo 142E","2":"21.4","3":"4","4":"121.0","5":"109","6":"4.11","7":"2.780","8":"18.60","9":"1","10":"1","11":"4","12":"2"}],"options":{"columns":{"min":{},"max":[10],"total":[12]},"rows":{"min":[10],"max":[10],"total":[32]},"pages":{}}}
-  </script>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
-<!-- rnb-frame-end -->
+<div id="icma-sept-18-2024" class="section level1">
+<h1>ICMA Sept 18 2024</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuNCAgICAg4pyUIHJlYWRyICAgICAyLjEuNVxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMVxu4pyUIGdncGxvdDIgICAzLjUuMSAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuMyAgICAg4pyUIHRpZHlyICAgICAxLjMuMVxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAgXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG7inJYgZHBseXI6OmZpbHRlcigpIG1hc2tzIHN0YXRzOjpmaWx0ZXIoKVxu4pyWIGRwbHlyOjpsYWcoKSAgICBtYXNrcyBzdGF0czo6bGFnKClcbuKEuSBVc2UgdGhlIFx1MDAxYl04OztodHRwOi8vY29uZmxpY3RlZC5yLWxpYi5vcmcvXHUwMDA3Y29uZmxpY3RlZCBwYWNrYWdlXHUwMDFiXTg7O1x1MDAwNyB0byBmb3JjZSBhbGwgY29uZmxpY3RzIHRvIGJlY29tZSBlcnJvcnNcbiJ9 -->
+<pre><code>── Attaching core tidyverse packages ─────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP0NoaWNrV2VpZ2h0XG5nbGltcHNlKENoaWNrV2VpZ2h0KVxuYGBgIn0= -->
+<pre class="r"><code>?ChickWeight
+glimpse(ChickWeight)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNTc4XG5Db2x1bW5zOiA0XG4kIHdlaWdodCA8ZGJsPiA0MiwgNTEsIDU5LCA2NCwgNzYsIDkzLCAxMDYsIDEyNSwgMTQ5LCAxNzEsIDE5OSwgMjA1LCA0MCwgNDksIDU4LCA3Miwg4oCmXG4kIFRpbWUgICA8ZGJsPiAwLCAyLCA0LCA2LCA4LCAxMCwgMTIsIDE0LCAxNiwgMTgsIDIwLCAyMSwgMCwgMiwgNCwgNiwgOCwgMTAsIDEyLCAxNCwg4oCmXG4kIENoaWNrICA8b3JkPiAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAyLCAyLCAyLCAyLCAyLCAyLCAyLCAyLCAyLCAyLCAyLCAy4oCmXG4kIERpZXQgICA8ZmN0PiAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAxLCAx4oCmXG4ifQ== -->
+<pre><code>Rows: 578
+Columns: 4
+$ weight &lt;dbl&gt; 42, 51, 59, 64, 76, 93, 106, 125, 149, 171, 199, 205, 40, 49, 58, 72, …
+$ Time   &lt;dbl&gt; 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 0, 2, 4, 6, 8, 10, 12, 14, …
+$ Chick  &lt;ord&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
+$ Diet   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hpY2tfY2xlYW48LUNoaWNrV2VpZ2h0JT4lXG4gIHNlbGVjdChjaGlja19pZCA9IENoaWNrLCBkaWV0ID0gRGlldCwgYWdlX2RheXMgPSBUaW1lLCB3ZWlnaHRfZ20gPSB3ZWlnaHQpXG5wcmludChjaGlja19jbGVhbilcbmBgYCJ9 -->
+<pre class="r"><code>chick_clean&lt;-ChickWeight%&gt;%
+  select(chick_id = Chick, diet = Diet, age_days = Time, weight_gm = weight)
+print(chick_clean)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hpY2tfY2xlYW4lPiVcbiAgZGlzdGluY3QoY2hpY2tfaWQpXG5gYGAifQ== -->
+<pre class="r"><code>chick_clean%&gt;%
+  distinct(chick_id)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hpY2tfY2xlYW4lPiVcbiAgbXV0YXRlKHdlaWdodF9sYnMgPSB3ZWlnaHRfZ20vNDUzLjYpICU+JVxuICBncm91cF9ieShkaWV0LGFnZV9kYXlzKSU+JVxuICBzdW1tYXJpc2UoTj1uKCksIG1lYW5fd2d0X2dtID0gbWVhbih3ZWlnaHRfZ20pLCBtZWFuX3dndF9sYnMgPSBtZWFuKHdlaWdodF9sYnMpKSU+JVxuICBmaWx0ZXIoYWdlX2RheXM9PTIwKVxuYGBgIn0= -->
+<pre class="r"><code>chick_clean%&gt;%
+  mutate(weight_lbs = weight_gm/453.6) %&gt;%
+  group_by(diet,age_days)%&gt;%
+  summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))%&gt;%
+  filter(age_days==20)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hpY2tfY2xlYW4lPiVcbiAgZmlsdGVyKGFnZV9kYXlzPT0yMCklPiVcbiAgbXV0YXRlKHdlaWdodF9sYnMgPSB3ZWlnaHRfZ20vNDUzLjYpJT4lXG4gIGdyb3VwX2J5KGRpZXQpJT4lXG4gIHN1bW1hcmlzZShOPW4oKSwgbWVhbl93Z3RfZ20gPSBtZWFuKHdlaWdodF9nbSksIG1lYW5fd2d0X2xicyA9IG1lYW4od2VpZ2h0X2xicykpXG5cbmBgYCJ9 -->
+<pre class="r"><code>chick_clean%&gt;%
+  filter(age_days==20)%&gt;%
+  mutate(weight_lbs = weight_gm/453.6)%&gt;%
+  group_by(diet)%&gt;%
+  summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXRjYXJzX21vZGlmaWVkPC1yZWFkX2NzdihcImRhdGEvbXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code>mtcars_modified&lt;-read_csv(&quot;data/mtcars_fromR_rownames.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xpbXBzZShtdGNhcnNfbW9kaWZpZWQpXG5gYGAifQ== -->
+<pre class="r"><code>glimpse(mtcars_modified)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzJcbkNvbHVtbnM6IDEyXG4kIHJvd25hbWUgPGNocj4gXCJNYXpkYSBSWDRcIiwgXCJNYXpkYSBSWDQgV2FnXCIsIFwiRGF0c3VuIDcxMFwiLCBcIkhvcm5ldCA0IERyaXZlXCIsIFwiSG9ybmV04oCmXG4kIG1wZyAgICAgPGRibD4gMjEuMCwgMjEuMCwgMjIuOCwgMjEuNCwgMTguNywgMTguMSwgMTQuMywgMjQuNCwgMjIuOCwgMTkuMiwgMTcuOCwgMTYu4oCmXG4kIGN5bCAgICAgPGRibD4gNiwgNiwgNCwgNiwgOCwgNiwgOCwgNCwgNCwgNiwgNiwgOCwgOCwgOCwgOCwgOCwgOCwgNCwgNCwgNCwgNCwgOCwgOCwg4oCmXG4kIGRpc3AgICAgPGRibD4gMTYwLjAsIDE2MC4wLCAxMDguMCwgMjU4LjAsIDM2MC4wLCAyMjUuMCwgMzYwLjAsIDE0Ni43LCAxNDAuOCwgMTY3LjYs4oCmXG4kIGhwICAgICAgPGRibD4gMTEwLCAxMTAsIDkzLCAxMTAsIDE3NSwgMTA1LCAyNDUsIDYyLCA5NSwgMTIzLCAxMjMsIDE4MCwgMTgwLCAxODAsIDIw4oCmXG4kIGRyYXQgICAgPGRibD4gMy45MCwgMy45MCwgMy44NSwgMy4wOCwgMy4xNSwgMi43NiwgMy4yMSwgMy42OSwgMy45MiwgMy45MiwgMy45MiwgMy4w4oCmXG4kIHd0ICAgICAgPGRibD4gMi42MjAsIDIuODc1LCAyLjMyMCwgMy4yMTUsIDMuNDQwLCAzLjQ2MCwgMy41NzAsIDMuMTkwLCAzLjE1MCwgMy40NDAs4oCmXG4kIHFzZWMgICAgPGRibD4gMTYuNDYsIDE3LjAyLCAxOC42MSwgMTkuNDQsIDE3LjAyLCAyMC4yMiwgMTUuODQsIDIwLjAwLCAyMi45MCwgMTguMzAs4oCmXG4kIHZzICAgICAgPGRibD4gMCwgMCwgMSwgMSwgMCwgMSwgMCwgMSwgMSwgMSwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMSwgMSwgMCwgMCwg4oCmXG4kIGFtICAgICAgPGRibD4gMSwgMSwgMSwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMSwgMSwgMSwgMCwgMCwgMCwg4oCmXG4kIGdlYXIgICAgPGRibD4gNCwgNCwgNCwgMywgMywgMywgMywgNCwgNCwgNCwgNCwgMywgMywgMywgMywgMywgMywgNCwgNCwgNCwgMywgMywgMywg4oCmXG4kIGNhcmIgICAgPGRibD4gNCwgNCwgMSwgMSwgMiwgMSwgNCwgMiwgMiwgNCwgNCwgMywgMywgMywgNCwgNCwgNCwgMSwgMiwgMSwgMSwgMiwgMiwg4oCmXG4ifQ== -->
+<pre><code>Rows: 32
+Columns: 12
+$ rowname &lt;chr&gt; &quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet…
+$ mpg     &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8, 16.…
+$ cyl     &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8, 8, …
+$ disp    &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 167.6,…
+$ hp      &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180, 20…
+$ drat    &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92, 3.0…
+$ wt      &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.440,…
+$ qsec    &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18.30,…
+$ vs      &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, …
+$ am      &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, …
+$ gear    &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, …
+$ carb    &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2, 2, …</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkQyU0MgSUNNQSBOb3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KYXV0aG9yOiAiQWJoaSBQYXRlbCINCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCINCi0tLQ0KIyBJQ01BIFNlcHQgOSAyMDI0DQpgYGB7cn0NCnBsb3QoY2FycykNCmBgYA0KIyBJQ01BIFNlcHQgMTEgMjAyNA0KVGhpcyBpcyB3aGVyZSB3ZSBwdXQgcGxhaW4gdGV4dC4NCmBgYHtyfQ0KI3RoaXMgaXMgd2hlcmUgd2UgcHV0IHIgY29kZQ0KZmF2ZV9udW1iZXI8LTEyDQpwcmludChmYXZlX251bWJlcikNCmAxbnVtYmVyMWA8LTE1DQpwcmludChgMW51bWJlcjFgKQ0Kb2hub190aGlzX2lzX2FfbmlnaHRtYXJlPC0iaGVsbG8iDQoNCmBgYA0KYGBge3J9DQoyKzINCmBgYA0KDQpgYGB7cn0NCng8LTIrMg0KYGBgDQpgYGB7cn0NCmhlbHAoYykNCm15X3ZlY3RvcjwtYygyLDMsNC42NjY2NjgpDQptZWFuKG15X3ZlY3RvcikNCmBgYA0KYGBge3J9DQpzZCgxOjIpXjINCmBgYA0KIyBJQ01BIFNlcHQgMTYgMjkyNA0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmdldHdkKCkNCm10Y2FycyU+JQ0KICByb3duYW1lc190b19jb2x1bW4oKSU+JQ0KICB3cml0ZV9jc3YoIm10Y2Fyc19mcm9tUl9yb3duYW1lcy5jc3YiKQ0KYGBgDQpgYGB7cn0NCm10Y2Fyc19yZWFkPC1yZWFkX2NzdigibXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdiIpDQptdGNhcnNfcmVhZA0KYGBg</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkQyU0MgSUNNQSBOb3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KYXV0aG9yOiAiQWJoaSBQYXRlbCINCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCINCi0tLQ0KIyBJQ01BIFNlcHQgOSAyMDI0DQpgYGB7cn0NCnBsb3QoY2FycykNCmBgYA0KIyBJQ01BIFNlcHQgMTEgMjAyNA0KVGhpcyBpcyB3aGVyZSB3ZSBwdXQgcGxhaW4gdGV4dC4NCmBgYHtyfQ0KI3RoaXMgaXMgd2hlcmUgd2UgcHV0IHIgY29kZQ0KZmF2ZV9udW1iZXI8LTEyDQpwcmludChmYXZlX251bWJlcikNCmAxbnVtYmVyMWA8LTE1DQpwcmludChgMW51bWJlcjFgKQ0Kb2hub190aGlzX2lzX2FfbmlnaHRtYXJlPC0iaGVsbG8iDQoNCmBgYA0KYGBge3J9DQoyKzINCmBgYA0KDQpgYGB7cn0NCng8LTIrMg0KYGBgDQpgYGB7cn0NCmhlbHAoYykNCm15X3ZlY3RvcjwtYygyLDMsNC42NjY2NjgpDQptZWFuKG15X3ZlY3RvcikNCmBgYA0KYGBge3J9DQpzZCgxOjIpXjINCmBgYA0KIyBJQ01BIFNlcHQgMTYgMjkyNA0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmdldHdkKCkNCm10Y2FycyU+JQ0KICByb3duYW1lc190b19jb2x1bW4oKSU+JQ0KICB3cml0ZV9jc3YoIm10Y2Fyc19mcm9tUl9yb3duYW1lcy5jc3YiKQ0KYGBgDQpgYGB7cn0NCm10Y2Fyc19yZWFkPC1yZWFkX2NzdigibXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdiIpDQptdGNhcnNfcmVhZA0KYGBgDQojIElDTUEgU2VwdCAxOCAyMDI0DQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KYGBgDQpgYGB7cn0NCj9DaGlja1dlaWdodA0KZ2xpbXBzZShDaGlja1dlaWdodCkNCmBgYA0KYGBge3J9DQpjaGlja19jbGVhbjwtQ2hpY2tXZWlnaHQlPiUNCiAgc2VsZWN0KGNoaWNrX2lkID0gQ2hpY2ssIGRpZXQgPSBEaWV0LCBhZ2VfZGF5cyA9IFRpbWUsIHdlaWdodF9nbSA9IHdlaWdodCkNCnByaW50KGNoaWNrX2NsZWFuKQ0KYGBgDQpgYGB7cn0NCmNoaWNrX2NsZWFuJT4lDQogIGRpc3RpbmN0KGNoaWNrX2lkKQ0KYGBgDQpgYGB7cn0NCmNoaWNrX2NsZWFuJT4lDQogIG11dGF0ZSh3ZWlnaHRfbGJzID0gd2VpZ2h0X2dtLzQ1My42KSAlPiUNCiAgZ3JvdXBfYnkoZGlldCxhZ2VfZGF5cyklPiUNCiAgc3VtbWFyaXNlKE49bigpLCBtZWFuX3dndF9nbSA9IG1lYW4od2VpZ2h0X2dtKSwgbWVhbl93Z3RfbGJzID0gbWVhbih3ZWlnaHRfbGJzKSklPiUNCiAgZmlsdGVyKGFnZV9kYXlzPT0yMCkNCmBgYA0KYGBge3J9DQpjaGlja19jbGVhbiU+JQ0KICBmaWx0ZXIoYWdlX2RheXM9PTIwKSU+JQ0KICBtdXRhdGUod2VpZ2h0X2xicyA9IHdlaWdodF9nbS80NTMuNiklPiUNCiAgZ3JvdXBfYnkoZGlldCklPiUNCiAgc3VtbWFyaXNlKE49bigpLCBtZWFuX3dndF9nbSA9IG1lYW4od2VpZ2h0X2dtKSwgbWVhbl93Z3RfbGJzID0gbWVhbih3ZWlnaHRfbGJzKSkNCg0KYGBgDQpgYGB7cn0NCm10Y2Fyc19tb2RpZmllZDwtcmVhZF9jc3YoImRhdGEvbXRjYXJzX2Zyb21SX3Jvd25hbWVzLmNzdiIpDQpgYGANCmBgYHtyfQ0KZ2xpbXBzZShtdGNhcnNfbW9kaWZpZWQpDQpgYGA=</div>
 
 
 

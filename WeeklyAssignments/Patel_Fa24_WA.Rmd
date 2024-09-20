@@ -44,4 +44,4 @@ relational_task%>%
   summarize(num_trials = n())%>%
   distinct(num_trials)
 ```
-All participants have data from the same number of trials. In this this seems to be 8 trials per participant.
+All participants have data from the same number of trials. In this dataset, it seems to be 8 trials per participant.

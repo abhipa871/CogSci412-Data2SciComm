@@ -9,7 +9,7 @@ output: html_notebook
 ```{r}
 library(tidyverse)
 ```
-# Week 1
+# Assignment 1
 
 To be able to figure out how to load a library in R, I went to google and searched up "load libraries in r". Then, I clicked on the top result as the description seemed to be what I was looking for. This was https://bookdown.org/nana/intror/install-and-load-packages.html. This gave me the instructions for both installing packages as well as loading libraries. I used the loading libraries instruction it suggested and ran it in a R code chunk. It ended up working correctly.
 
@@ -18,3 +18,30 @@ To be able to figure out how to load a library in R, I went to google and search
 ```
 The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design. This package is designed to make it easy to install and load multiple 'tidyverse' packages in a single step. Learn more about the 'tidyverse' at https://www.tidyverse.org.
 
+# Assignment 2
+
+```{r}
+relational_task<-read_csv("tidy_data/MFIndD_analogy.csv")
+print(relational_task)
+```
+"qualtrics_id" is the column that contains the unique identifier for each participant.
+
+```{r}
+glimpse(relational_task)
+```
+The dataset has 792 rows and 6 columns. I got this information using the glimpse() function which allows us to get an idea of the data that we are seeing. This function also shows the number of rows and columns as a part of this
+
+```{r}
+relational_task%>%
+  distinct(qualtrics_id)%>%
+  count()
+```
+There are 99 people in the dataset.
+
+```{r}
+relational_task%>%
+  group_by(qualtrics_id)%>%
+  summarize(num_trials = n())%>%
+  distinct(num_trials)
+```
+All participants have data from the same number of trials. In this this seems to be 8 trials per participant.

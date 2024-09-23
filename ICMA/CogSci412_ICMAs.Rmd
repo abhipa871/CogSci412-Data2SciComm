@@ -72,7 +72,7 @@ chick_clean%>%
 ```
 ```{r}
 chick_clean%>%
-  filter(age_days==20)%>%
+  filter(age_days==20)%>%S
   mutate(weight_lbs = weight_gm/453.6)%>%
   group_by(diet)%>%
   summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))
@@ -83,4 +83,36 @@ mtcars_modified<-read_csv("data/mtcars_fromR_rownames.csv")
 ```
 ```{r}
 glimpse(mtcars_modified)
+```
+
+# ICMA Sept 23 2024
+```{r}
+billboard_long<-billboard%>%
+  pivot_longer(cols = starts_with("wk"), 
+               names_to = "week", 
+               values_to = "position")
+```
+```{r}
+dim(billboard_long)
+billboard_long%>%
+  pivot_wider(names_from = week, values_from = position)
+```
+```{r}
+billboard_long
+```
+```{r}
+?pivot_longer
+```
+```{r}
+billboard%>%
+  pivot_longer(cols = starts_with("wk"),
+               names_to = "week",
+               values_to = "position",
+               names_prefix = "wk",
+               values_drop_na = TRUE)
+```
+```{r}
+billboard%>%
+  separate(col = date.entered, into = c("year", "month", "day") )%>%
+  unite(col = "full_date", c(year, month, day), sep = "-")
 ```

@@ -45,3 +45,39 @@ relational_task%>%
   distinct(num_trials)
 ```
 All participants have data from the same number of trials. In this dataset, it seems to be 8 trials per participant.
+
+# Assignment 3
+```{r}
+library(ggplot2)
+```
+```{r}
+relational_response_type<-
+relational_task%>%
+  group_by(qualtrics_id)%>%
+  summarize(num_relational_matches = sum(response_type=="Rel"))%>%
+  ungroup()
+  
+```
+```{r}
+relational_response_type %>%
+  ggplot(aes(x=num_relational_matches)) +
+  geom_histogram()+
+  labs(title = "Number of Relational Responses per Participant", y = "Number of Participants", x = "Number of Relational Matches")
+```
+I notice that 0 and 8 relational matches seem to have the highest amount of participants associated with . All the number of relational matches in the middle seem to be considerably smaller and relatively even. Perhaps, this may suggest that a person has a tendency to either choose a relational_match or not choose it at all.
+```{r}
+reshaped_relational_task<-
+  relational_task%>%
+  select(qualtrics_id, trial_number, response_type) %>% 
+  arrange(trial_number)%>%
+  pivot_wider(names_from = trial_number, values_from = response_type)
+  reshaped_relational_task
+  
+```
+```{r, eval = FALSE}
+relational_response_type %>%
+  ggplot(aes(x=num_relational_matches, y = qualtrics_id)) +
+  geom_histogram()+
+  labs(title = "Number of Relational Responses per Participant", y = "Number of Participants", x = "Number of Relational Matches")
+```
+It turns out that you can only set one axes equal to a column in the aesthetic. I was trying to do it as if setting the x and y variables for a graph, but it wasn't working like that. Nor would it have been correct in hindsight for the question asked. I resolved the error by only having x = num_relational_matches such that we have a histogram that answers the question and solves the error.

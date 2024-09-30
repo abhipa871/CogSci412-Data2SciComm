@@ -1,0 +1,34 @@
+---
+title: "Data Esercise 1: Decision Making"
+author: "Abhi Patel"
+date: "`r Sys.Date()`"
+output: html_notebook
+---
+
+This is the notebook for Data Exercise 1, about decision making. We did a study together in  class in Qualtrics
+```{r}
+library(tidyverse)
+```
+```{r}
+de1<-read_csv("CogSci412_DE1_data.csv")%>%
+  filter(Progress == 100 & Status == "IP Address")%>%
+  mutate(condition = case_when(is.na(FL_39_DO)==FALSE~FL_39_DO,
+                               is.na(FL_43_DO)==FALSE~FL_43_DO))%>%
+  select(ResponseId,
+         pencil_control = `Pencil Control`,
+         pencil_control_conf = `Conf. Pencil Control`,
+         mag_stnd = `Magazine_Control`,
+         mag_stnd_conf = `Conf. Mag. Stand.`,
+         pencil_stnd = Pencil_Standard,
+         pencil_stnd_conf = `Conf. Pencil Stand.`,
+         familiarity = Q10,
+         FL_42_DO,
+         FL_39_DO,
+         FL_43_DO)%>%
+  filter(ResponseId!="R_5R9cvvcJ5vFulLe")
+
+
+```
+```{r}
+del_long<-
+```

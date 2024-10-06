@@ -76,8 +76,55 @@ reshaped_relational_task<-
 ```
 ```{r, eval = FALSE}
 relational_response_type %>%
-  ggplot(aes(x=num_relational_matches, y = qualtrics_id)) +
+  ggplot(aes(x=num_relational_matches, 
+             y = qualtrics_id)) +
   geom_histogram()+
-  labs(title = "Number of Relational Responses per Participant", y = "Number of Participants", x = "Number of Relational Matches")
+  labs(title = "Number of Relational Responses per Participant", 
+       y = "Number of Participants", 
+       x = "Number of Relational Matches")
 ```
 It turns out that you can only set one axes equal to a column in the aesthetic. I was trying to do it as if setting the x and y variables for a graph, but it wasn't working like that. Nor would it have been correct in hindsight for the question asked. I resolved the error by only having x = num_relational_matches such that we have a histogram that answers the question and solves the error.
+
+# Assignment 4
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+```{r}
+rational_task<-read_csv("tidy_data/MFIndD_REI.csv")
+head(rational_task)
+typeof(rational_task$scored_response)
+
+```
+The column type of the response column is type character. The column type of the scored_response column is type double. They are different even they both contain numbers because the response column includes 1-5 and Strongly Disagree to Strongly Agree as t for one and the other in the response as per the likert scale. The scored response is a double that takes into account any reverse scoring to give a numerical output.
+
+```{r}
+rational_task <- rational_task %>%
+  mutate(response_numeric = case_when(
+    response == "Strongly Disagree" ~ 1,
+    response == "Disagree" ~ 2,
+    response == "Neutral" ~ 3,
+    response == "Agree" ~ 4,
+    response == "Strongly Agree" ~ 5,
+    response == "1" ~ 1,
+    response == "2" ~ 2,
+    response == "3" ~ 3,
+    response == "4" ~ 4,
+    response == "5" ~ 5,
+    TRUE ~ NA_real_  # NA for any unexpected values
+  ))
+rational_task
+
+```
+```{r}
+rational_task<-rational_task%>%
+  mutate(new_scored_response = ifelse(!is.na(rev_scoring),
+                                      6-response_numeric,
+                                      response_numeric))
+rational_task
+```
+```{r}
+differences<-rational_task%>%
+  filter(scored_response!=new_scored_response)
+differences
+```

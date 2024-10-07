@@ -132,3 +132,16 @@ ChickWeight%>%
        title = "Weight over time across diets")
 ggsave("chick_weightovertime.png")
 ```
+# ICMA Oct 7 2024
+```{r}
+as.integer("18.123123")
+```
+```{r}
+my_double<-12.9
+```
+```{r}
+as.character(my_double)
+```
+```{r}
+2+3+9+4==2+6+as.integer("2.9") & TRUE | NA
+```

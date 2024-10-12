@@ -56,7 +56,7 @@ relational_task%>%
   group_by(qualtrics_id)%>%
   summarize(num_relational_matches = sum(response_type=="Rel"))%>%
   ungroup()
-  
+
 ```
 ```{r}
 relational_response_type %>%
@@ -128,3 +128,50 @@ differences<-rational_task%>%
   filter(scored_response!=new_scored_response)
 differences
 ```
+
+# Assignment 5
+```{r}
+summarized_REI<-read_csv("tidy_data/MFIndD_REI.csv")%>%
+  group_by(qualtrics_id, sub_type)%>%
+  summarize(score = sum(scored_response))
+print(summarized_REI)
+
+```
+```{r}
+NA_scores <- summarized_REI %>%
+  filter(is.na(score))
+NA_scores
+?summarize
+```
+
+Yes, there are NAs
+
+```{r}
+summarized_REI<-read_csv("tidy_data/MFIndD_REI.csv")%>%
+  group_by(qualtrics_id, sub_type)%>%
+  summarize(score = sum(scored_response, na.rm = TRUE))
+print(summarized_REI)
+NA_scores <- summarized_REI %>%
+  filter(is.na(score))
+NA_scores
+```
+```{r}
+combined_data<-
+  left_join(summarized_REI, relational_response_type, by="qualtrics_id")%>%
+  filter(!is.na(num_relational_matches))
+combined_data
+```
+```{r}
+combined_data %>%
+  ggplot(aes(
+    x=num_relational_matches, 
+    y=score, 
+    color=sub_type)) +
+  geom_point()+
+  geom_smooth(method = "lm")+
+  labs(title = "REI Score vs Analogy Score", 
+       y = "REI Score", 
+       x = "Analogy Score")
+  
+```
+The relation in the scatter plot seems to be that the maximum REI Scores happen at around the Analogy score of 0 and 8. If we are looking at the regression lines, it seems that the subtypes in order of the highest REI Scores to lowest across the analogy scores, seem to be RA, RE,EA,and EE.

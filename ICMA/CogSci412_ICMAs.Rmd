@@ -172,3 +172,58 @@ left_join(age_data, gender_data)
 
 
 ```
+
+# ICMA Oct 16 2024
+```{r}
+mean(c(1,2,3))
+```
+```{r}
+(1+2+3)/3
+```
+```{r}
+vec<-c(1,2,3)
+```
+```{r}
+(vec[1]+vec[2]+vec[3])/length(vec)
+```
+```{r}
+for(i in 1:10)
+{
+  print(i^2)
+}
+```
+```{r}
+library(tidyverse)
+library(dplyr)
+fave_number<-tribble(~name, ~number,
+                     "MC", 8,
+                     "AP", 9,
+                     "NG", 12,
+                     "VE", 6,
+                     "AL", 17,
+                     "AR", 3,
+                     "MC", 7,
+                     "RK", 8,
+                     "AC", 4,
+                     "SC", 21,
+                     "KK", 16,
+                     "RK", 28,
+                     "VK", 17,
+                     "MH", 12)
+```
+Write a loop to print each fave number
+```{r}
+for (i in fave_number$number)
+{
+  print(i)
+}
+```
+Why is the output different?
+How are fave_number["number"] and fave_number$number different?
+```{r}
+typeof(fave_number[["number"]])
+typeof(fave_number$number)
+```
+```{r}
+
+```

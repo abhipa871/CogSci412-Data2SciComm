@@ -175,3 +175,54 @@ combined_data %>%
   
 ```
 The relation in the scatter plot seems to be that the maximum REI Scores happen at around the Analogy score of 0 and 8. If we are looking at the regression lines, it seems that the subtypes in order of the highest REI Scores to lowest across the analogy scores, seem to be RA, RE,EA,and EE.
+
+# Assignment 6
+```{r}
+prob_task<-read_csv("tidy_data/MFIndD_probtask.csv")
+prob_task
+```
+```{r}
+prob_task%>%
+  distinct(condition)
+```
+There are 4 distinct values in the "condition" column.
+
+```{r}
+prob_condition<-prob_task%>%
+  distinct(condition)%>%
+  pull(condition)
+prob_condition
+is.vector(prob_condition)
+```
+
+```{r}
+mean_reaction_time<-numeric(length(prob_condition))
+length(mean_reaction_time)
+prob_task%>%
+  group_by(condition)%>%
+  summarize(mean_reaction_time = mean(rt))
+for(i in 1:length(mean_reaction_time))
+{
+  mean_reaction_time[i] = prob_task%>%
+                          filter(condition==prob_condition[i])%>%
+                          summarize(mean_reaction_time= mean(rt))%>%
+                          pull(mean_reaction_time)
+}
+mean_reaction_time
+  
+```
+```{r}
+summary_table_without<-prob_task%>%
+  group_by(condition)%>%
+  summarize(mean_reaction_time = mean(rt), 
+            accuracy = mean(correct))
+summary_table_without
+```
+```{r}
+summary_table_across<-prob_task%>%
+  group_by(condition)%>%
+  summarize(across(
+    .cols = c(mean_reaction_time =rt, accuracy=correct), 
+    .fns = mean))
+summary_table_across
+```

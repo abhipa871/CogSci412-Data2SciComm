@@ -32,14 +32,43 @@ raw_data<-map(files, read_csv)%>%
   bind_rows()
 ```
 ```{r}
-raw_data%>%
-  group_by(distance)%>%
-  summarise(succ_rate = sum(outcome==1))
+summary_data <- raw_data %>%
+  group_by(subject, distance) %>%
+  summarise(succ_rate = sum(outcome == 1)/n())
 ```
 ```{r}
 raw_data
 ```
 
 ```{r}
-
+summary_data %>%
+  ggplot(aes(x = succ_rate)) +
+  geom_histogram() 
+```
+```{r}
+summary_data %>%
+  ggplot(aes(x = distance,
+             y = succ_rate,
+             group = subject)) +
+  geom_line() +
+  ylim(0, 1)
+```
+```{r}
+raw_data %>%
+  group_by(subject, distance) %>%
+  mutate(succ_rate_NOabort = sum(outcome == 1)/(n() - sum(outcome == 2)))
+```
+```{r}
+raw_data %>%
+  group_by(subject, distance) %>%
+# filter(outcome == 1 | outcome == 0)
+# filter(outcome != 2) 
+  filter(outcome %in% c(0, 1)) %>%
+  summarise(succ_rate = sum(outcome == 1)/n()) %>%
+  ggplot(aes(x = distance,
+             y = succ_rate,
+             group = subject)) +
+  geom_line(aes(group = subject),alpha=0.3) +
+  stat_summary(fun = "mean_se", geom = "errorbar")+
+  ylim(0, 1)
 ```

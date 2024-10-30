@@ -1,8 +1,17 @@
 ---
 title: "D2SC ICMA Notebook"
-output: html_notebook
 author: "Abhi Patel"
 date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth:2
+    toc_float: yes
+  word_document:
+    toc: yes
 ---
 # ICMA Sept 9 2024
 ```{r}
@@ -70,7 +79,7 @@ chick_clean%>%
   summarise(N=n(), mean_wgt_gm = mean(weight_gm), mean_wgt_lbs = mean(weight_lbs))%>%
   filter(age_days==20)
 ```
-```{r}
+```{r eval = FALSE}
 chick_clean%>%
   filter(age_days==20)%>%S
   mutate(weight_lbs = weight_gm/453.6)%>%
@@ -226,4 +235,9 @@ typeof(fave_number$number)
 ```
 ```{r}
 
+```
+
+# ICMA Oct 30 2024
+```{r}
+library(tidyverse)
 ```

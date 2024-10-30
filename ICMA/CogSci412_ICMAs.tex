@@ -1,0 +1,1485 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={D2SC ICMA Notebook},
+  pdfauthor={Abhi Patel},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{D2SC ICMA Notebook}
+\author{Abhi Patel}
+\date{2024-10-30}
+
+\begin{document}
+\maketitle
+
+\section{ICMA Sept 9 2024}\label{icma-sept-9-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CogSci412_ICMAs_files/figure-latex/unnamed-chunk-1-1.pdf}
+\# ICMA Sept 11 2024 This is where we put plain text.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#this is where we put r code}
+\NormalTok{fave\_number}\OtherTok{\textless{}{-}}\DecValTok{12}
+\FunctionTok{print}\NormalTok{(fave\_number)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{\textasciigrave{}}\AttributeTok{1number1}\StringTok{\textasciigrave{}}\OtherTok{\textless{}{-}}\DecValTok{15}
+\FunctionTok{print}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{1number1}\StringTok{\textasciigrave{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ohno\_this\_is\_a\_nightmare}\OtherTok{\textless{}{-}}\StringTok{"hello"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{+}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{\textless{}{-}}\DecValTok{2}\SpecialCharTok{+}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{help}\NormalTok{(c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## starting httpd help server ... done
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_vector}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\FloatTok{4.666668}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(my\_vector)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.222223
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5
+\end{verbatim}
+
+\section{ICMA Sept 16 2924}\label{icma-sept-16-2924}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.1     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "C:/Users/patel/OneDrive/Documents/GitHub/CogSci412-Data2SciComm/ICMA"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rownames\_to\_column}\NormalTok{()}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{write\_csv}\NormalTok{(}\StringTok{"mtcars\_fromR\_rownames.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars\_read}\OtherTok{\textless{}{-}}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"mtcars\_fromR\_rownames.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 32 Columns: 12
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (1): rowname
+## dbl (11): mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars\_read}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 12
+##    rowname       mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2 Mazda RX4 ~  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3 Datsun 710   22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4 Hornet 4 D~  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5 Hornet Spo~  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6 Valiant      18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8 Merc 240D    24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9 Merc 230     22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10 Merc 280     19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # i 22 more rows
+\end{verbatim}
+
+\section{ICMA Sept 18 2024}\label{icma-sept-18-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?ChickWeight}
+\FunctionTok{glimpse}\NormalTok{(ChickWeight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 578
+## Columns: 4
+## $ weight <dbl> 42, 51, 59, 64, 76, 93, 106, 125, 149, 171, 199, 205, 40, 49, 5~
+## $ Time   <dbl> 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 0, 2, 4, 6, 8, 10, 1~
+## $ Chick  <ord> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, ~
+## $ Diet   <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chick\_clean}\OtherTok{\textless{}{-}}\NormalTok{ChickWeight}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\AttributeTok{chick\_id =}\NormalTok{ Chick, }\AttributeTok{diet =}\NormalTok{ Diet, }\AttributeTok{age\_days =}\NormalTok{ Time, }\AttributeTok{weight\_gm =}\NormalTok{ weight)}
+\FunctionTok{print}\NormalTok{(chick\_clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     chick_id diet age_days weight_gm
+## 1          1    1        0        42
+## 2          1    1        2        51
+## 3          1    1        4        59
+## 4          1    1        6        64
+## 5          1    1        8        76
+## 6          1    1       10        93
+## 7          1    1       12       106
+## 8          1    1       14       125
+## 9          1    1       16       149
+## 10         1    1       18       171
+## 11         1    1       20       199
+## 12         1    1       21       205
+## 13         2    1        0        40
+## 14         2    1        2        49
+## 15         2    1        4        58
+## 16         2    1        6        72
+## 17         2    1        8        84
+## 18         2    1       10       103
+## 19         2    1       12       122
+## 20         2    1       14       138
+## 21         2    1       16       162
+## 22         2    1       18       187
+## 23         2    1       20       209
+## 24         2    1       21       215
+## 25         3    1        0        43
+## 26         3    1        2        39
+## 27         3    1        4        55
+## 28         3    1        6        67
+## 29         3    1        8        84
+## 30         3    1       10        99
+## 31         3    1       12       115
+## 32         3    1       14       138
+## 33         3    1       16       163
+## 34         3    1       18       187
+## 35         3    1       20       198
+## 36         3    1       21       202
+## 37         4    1        0        42
+## 38         4    1        2        49
+## 39         4    1        4        56
+## 40         4    1        6        67
+## 41         4    1        8        74
+## 42         4    1       10        87
+## 43         4    1       12       102
+## 44         4    1       14       108
+## 45         4    1       16       136
+## 46         4    1       18       154
+## 47         4    1       20       160
+## 48         4    1       21       157
+## 49         5    1        0        41
+## 50         5    1        2        42
+## 51         5    1        4        48
+## 52         5    1        6        60
+## 53         5    1        8        79
+## 54         5    1       10       106
+## 55         5    1       12       141
+## 56         5    1       14       164
+## 57         5    1       16       197
+## 58         5    1       18       199
+## 59         5    1       20       220
+## 60         5    1       21       223
+## 61         6    1        0        41
+## 62         6    1        2        49
+## 63         6    1        4        59
+## 64         6    1        6        74
+## 65         6    1        8        97
+## 66         6    1       10       124
+## 67         6    1       12       141
+## 68         6    1       14       148
+## 69         6    1       16       155
+## 70         6    1       18       160
+## 71         6    1       20       160
+## 72         6    1       21       157
+## 73         7    1        0        41
+## 74         7    1        2        49
+## 75         7    1        4        57
+## 76         7    1        6        71
+## 77         7    1        8        89
+## 78         7    1       10       112
+## 79         7    1       12       146
+## 80         7    1       14       174
+## 81         7    1       16       218
+## 82         7    1       18       250
+## 83         7    1       20       288
+## 84         7    1       21       305
+## 85         8    1        0        42
+## 86         8    1        2        50
+## 87         8    1        4        61
+## 88         8    1        6        71
+## 89         8    1        8        84
+## 90         8    1       10        93
+## 91         8    1       12       110
+## 92         8    1       14       116
+## 93         8    1       16       126
+## 94         8    1       18       134
+## 95         8    1       20       125
+## 96         9    1        0        42
+## 97         9    1        2        51
+## 98         9    1        4        59
+## 99         9    1        6        68
+## 100        9    1        8        85
+## 101        9    1       10        96
+## 102        9    1       12        90
+## 103        9    1       14        92
+## 104        9    1       16        93
+## 105        9    1       18       100
+## 106        9    1       20       100
+## 107        9    1       21        98
+## 108       10    1        0        41
+## 109       10    1        2        44
+## 110       10    1        4        52
+## 111       10    1        6        63
+## 112       10    1        8        74
+## 113       10    1       10        81
+## 114       10    1       12        89
+## 115       10    1       14        96
+## 116       10    1       16       101
+## 117       10    1       18       112
+## 118       10    1       20       120
+## 119       10    1       21       124
+## 120       11    1        0        43
+## 121       11    1        2        51
+## 122       11    1        4        63
+## 123       11    1        6        84
+## 124       11    1        8       112
+## 125       11    1       10       139
+## 126       11    1       12       168
+## 127       11    1       14       177
+## 128       11    1       16       182
+## 129       11    1       18       184
+## 130       11    1       20       181
+## 131       11    1       21       175
+## 132       12    1        0        41
+## 133       12    1        2        49
+## 134       12    1        4        56
+## 135       12    1        6        62
+## 136       12    1        8        72
+## 137       12    1       10        88
+## 138       12    1       12       119
+## 139       12    1       14       135
+## 140       12    1       16       162
+## 141       12    1       18       185
+## 142       12    1       20       195
+## 143       12    1       21       205
+## 144       13    1        0        41
+## 145       13    1        2        48
+## 146       13    1        4        53
+## 147       13    1        6        60
+## 148       13    1        8        65
+## 149       13    1       10        67
+## 150       13    1       12        71
+## 151       13    1       14        70
+## 152       13    1       16        71
+## 153       13    1       18        81
+## 154       13    1       20        91
+## 155       13    1       21        96
+## 156       14    1        0        41
+## 157       14    1        2        49
+## 158       14    1        4        62
+## 159       14    1        6        79
+## 160       14    1        8       101
+## 161       14    1       10       128
+## 162       14    1       12       164
+## 163       14    1       14       192
+## 164       14    1       16       227
+## 165       14    1       18       248
+## 166       14    1       20       259
+## 167       14    1       21       266
+## 168       15    1        0        41
+## 169       15    1        2        49
+## 170       15    1        4        56
+## 171       15    1        6        64
+## 172       15    1        8        68
+## 173       15    1       10        68
+## 174       15    1       12        67
+## 175       15    1       14        68
+## 176       16    1        0        41
+## 177       16    1        2        45
+## 178       16    1        4        49
+## 179       16    1        6        51
+## 180       16    1        8        57
+## 181       16    1       10        51
+## 182       16    1       12        54
+## 183       17    1        0        42
+## 184       17    1        2        51
+## 185       17    1        4        61
+## 186       17    1        6        72
+## 187       17    1        8        83
+## 188       17    1       10        89
+## 189       17    1       12        98
+## 190       17    1       14       103
+## 191       17    1       16       113
+## 192       17    1       18       123
+## 193       17    1       20       133
+## 194       17    1       21       142
+## 195       18    1        0        39
+## 196       18    1        2        35
+## 197       19    1        0        43
+## 198       19    1        2        48
+## 199       19    1        4        55
+## 200       19    1        6        62
+## 201       19    1        8        65
+## 202       19    1       10        71
+## 203       19    1       12        82
+## 204       19    1       14        88
+## 205       19    1       16       106
+## 206       19    1       18       120
+## 207       19    1       20       144
+## 208       19    1       21       157
+## 209       20    1        0        41
+## 210       20    1        2        47
+## 211       20    1        4        54
+## 212       20    1        6        58
+## 213       20    1        8        65
+## 214       20    1       10        73
+## 215       20    1       12        77
+## 216       20    1       14        89
+## 217       20    1       16        98
+## 218       20    1       18       107
+## 219       20    1       20       115
+## 220       20    1       21       117
+## 221       21    2        0        40
+## 222       21    2        2        50
+## 223       21    2        4        62
+## 224       21    2        6        86
+## 225       21    2        8       125
+## 226       21    2       10       163
+## 227       21    2       12       217
+## 228       21    2       14       240
+## 229       21    2       16       275
+## 230       21    2       18       307
+## 231       21    2       20       318
+## 232       21    2       21       331
+## 233       22    2        0        41
+## 234       22    2        2        55
+## 235       22    2        4        64
+## 236       22    2        6        77
+## 237       22    2        8        90
+## 238       22    2       10        95
+## 239       22    2       12       108
+## 240       22    2       14       111
+## 241       22    2       16       131
+## 242       22    2       18       148
+## 243       22    2       20       164
+## 244       22    2       21       167
+## 245       23    2        0        43
+## 246       23    2        2        52
+## 247       23    2        4        61
+## 248       23    2        6        73
+## 249       23    2        8        90
+## 250       23    2       10       103
+## 251       23    2       12       127
+## 252       23    2       14       135
+## 253       23    2       16       145
+## 254       23    2       18       163
+## 255       23    2       20       170
+## 256       23    2       21       175
+## 257       24    2        0        42
+## 258       24    2        2        52
+## 259       24    2        4        58
+## 260       24    2        6        74
+## 261       24    2        8        66
+## 262       24    2       10        68
+## 263       24    2       12        70
+## 264       24    2       14        71
+## 265       24    2       16        72
+## 266       24    2       18        72
+## 267       24    2       20        76
+## 268       24    2       21        74
+## 269       25    2        0        40
+## 270       25    2        2        49
+## 271       25    2        4        62
+## 272       25    2        6        78
+## 273       25    2        8       102
+## 274       25    2       10       124
+## 275       25    2       12       146
+## 276       25    2       14       164
+## 277       25    2       16       197
+## 278       25    2       18       231
+## 279       25    2       20       259
+## 280       25    2       21       265
+## 281       26    2        0        42
+## 282       26    2        2        48
+## 283       26    2        4        57
+## 284       26    2        6        74
+## 285       26    2        8        93
+## 286       26    2       10       114
+## 287       26    2       12       136
+## 288       26    2       14       147
+## 289       26    2       16       169
+## 290       26    2       18       205
+## 291       26    2       20       236
+## 292       26    2       21       251
+## 293       27    2        0        39
+## 294       27    2        2        46
+## 295       27    2        4        58
+## 296       27    2        6        73
+## 297       27    2        8        87
+## 298       27    2       10       100
+## 299       27    2       12       115
+## 300       27    2       14       123
+## 301       27    2       16       144
+## 302       27    2       18       163
+## 303       27    2       20       185
+## 304       27    2       21       192
+## 305       28    2        0        39
+## 306       28    2        2        46
+## 307       28    2        4        58
+## 308       28    2        6        73
+## 309       28    2        8        92
+## 310       28    2       10       114
+## 311       28    2       12       145
+## 312       28    2       14       156
+## 313       28    2       16       184
+## 314       28    2       18       207
+## 315       28    2       20       212
+## 316       28    2       21       233
+## 317       29    2        0        39
+## 318       29    2        2        48
+## 319       29    2        4        59
+## 320       29    2        6        74
+## 321       29    2        8        87
+## 322       29    2       10       106
+## 323       29    2       12       134
+## 324       29    2       14       150
+## 325       29    2       16       187
+## 326       29    2       18       230
+## 327       29    2       20       279
+## 328       29    2       21       309
+## 329       30    2        0        42
+## 330       30    2        2        48
+## 331       30    2        4        59
+## 332       30    2        6        72
+## 333       30    2        8        85
+## 334       30    2       10        98
+## 335       30    2       12       115
+## 336       30    2       14       122
+## 337       30    2       16       143
+## 338       30    2       18       151
+## 339       30    2       20       157
+## 340       30    2       21       150
+## 341       31    3        0        42
+## 342       31    3        2        53
+## 343       31    3        4        62
+## 344       31    3        6        73
+## 345       31    3        8        85
+## 346       31    3       10       102
+## 347       31    3       12       123
+## 348       31    3       14       138
+## 349       31    3       16       170
+## 350       31    3       18       204
+## 351       31    3       20       235
+## 352       31    3       21       256
+## 353       32    3        0        41
+## 354       32    3        2        49
+## 355       32    3        4        65
+## 356       32    3        6        82
+## 357       32    3        8       107
+## 358       32    3       10       129
+## 359       32    3       12       159
+## 360       32    3       14       179
+## 361       32    3       16       221
+## 362       32    3       18       263
+## 363       32    3       20       291
+## 364       32    3       21       305
+## 365       33    3        0        39
+## 366       33    3        2        50
+## 367       33    3        4        63
+## 368       33    3        6        77
+## 369       33    3        8        96
+## 370       33    3       10       111
+## 371       33    3       12       137
+## 372       33    3       14       144
+## 373       33    3       16       151
+## 374       33    3       18       146
+## 375       33    3       20       156
+## 376       33    3       21       147
+## 377       34    3        0        41
+## 378       34    3        2        49
+## 379       34    3        4        63
+## 380       34    3        6        85
+## 381       34    3        8       107
+## 382       34    3       10       134
+## 383       34    3       12       164
+## 384       34    3       14       186
+## 385       34    3       16       235
+## 386       34    3       18       294
+## 387       34    3       20       327
+## 388       34    3       21       341
+## 389       35    3        0        41
+## 390       35    3        2        53
+## 391       35    3        4        64
+## 392       35    3        6        87
+## 393       35    3        8       123
+## 394       35    3       10       158
+## 395       35    3       12       201
+## 396       35    3       14       238
+## 397       35    3       16       287
+## 398       35    3       18       332
+## 399       35    3       20       361
+## 400       35    3       21       373
+## 401       36    3        0        39
+## 402       36    3        2        48
+## 403       36    3        4        61
+## 404       36    3        6        76
+## 405       36    3        8        98
+## 406       36    3       10       116
+## 407       36    3       12       145
+## 408       36    3       14       166
+## 409       36    3       16       198
+## 410       36    3       18       227
+## 411       36    3       20       225
+## 412       36    3       21       220
+## 413       37    3        0        41
+## 414       37    3        2        48
+## 415       37    3        4        56
+## 416       37    3        6        68
+## 417       37    3        8        80
+## 418       37    3       10        83
+## 419       37    3       12       103
+## 420       37    3       14       112
+## 421       37    3       16       135
+## 422       37    3       18       157
+## 423       37    3       20       169
+## 424       37    3       21       178
+## 425       38    3        0        41
+## 426       38    3        2        49
+## 427       38    3        4        61
+## 428       38    3        6        74
+## 429       38    3        8        98
+## 430       38    3       10       109
+## 431       38    3       12       128
+## 432       38    3       14       154
+## 433       38    3       16       192
+## 434       38    3       18       232
+## 435       38    3       20       280
+## 436       38    3       21       290
+## 437       39    3        0        42
+## 438       39    3        2        50
+## 439       39    3        4        61
+## 440       39    3        6        78
+## 441       39    3        8        89
+## 442       39    3       10       109
+## 443       39    3       12       130
+## 444       39    3       14       146
+## 445       39    3       16       170
+## 446       39    3       18       214
+## 447       39    3       20       250
+## 448       39    3       21       272
+## 449       40    3        0        41
+## 450       40    3        2        55
+## 451       40    3        4        66
+## 452       40    3        6        79
+## 453       40    3        8       101
+## 454       40    3       10       120
+## 455       40    3       12       154
+## 456       40    3       14       182
+## 457       40    3       16       215
+## 458       40    3       18       262
+## 459       40    3       20       295
+## 460       40    3       21       321
+## 461       41    4        0        42
+## 462       41    4        2        51
+## 463       41    4        4        66
+## 464       41    4        6        85
+## 465       41    4        8       103
+## 466       41    4       10       124
+## 467       41    4       12       155
+## 468       41    4       14       153
+## 469       41    4       16       175
+## 470       41    4       18       184
+## 471       41    4       20       199
+## 472       41    4       21       204
+## 473       42    4        0        42
+## 474       42    4        2        49
+## 475       42    4        4        63
+## 476       42    4        6        84
+## 477       42    4        8       103
+## 478       42    4       10       126
+## 479       42    4       12       160
+## 480       42    4       14       174
+## 481       42    4       16       204
+## 482       42    4       18       234
+## 483       42    4       20       269
+## 484       42    4       21       281
+## 485       43    4        0        42
+## 486       43    4        2        55
+## 487       43    4        4        69
+## 488       43    4        6        96
+## 489       43    4        8       131
+## 490       43    4       10       157
+## 491       43    4       12       184
+## 492       43    4       14       188
+## 493       43    4       16       197
+## 494       43    4       18       198
+## 495       43    4       20       199
+## 496       43    4       21       200
+## 497       44    4        0        42
+## 498       44    4        2        51
+## 499       44    4        4        65
+## 500       44    4        6        86
+## 501       44    4        8       103
+## 502       44    4       10       118
+## 503       44    4       12       127
+## 504       44    4       14       138
+## 505       44    4       16       145
+## 506       44    4       18       146
+## 507       45    4        0        41
+## 508       45    4        2        50
+## 509       45    4        4        61
+## 510       45    4        6        78
+## 511       45    4        8        98
+## 512       45    4       10       117
+## 513       45    4       12       135
+## 514       45    4       14       141
+## 515       45    4       16       147
+## 516       45    4       18       174
+## 517       45    4       20       197
+## 518       45    4       21       196
+## 519       46    4        0        40
+## 520       46    4        2        52
+## 521       46    4        4        62
+## 522       46    4        6        82
+## 523       46    4        8       101
+## 524       46    4       10       120
+## 525       46    4       12       144
+## 526       46    4       14       156
+## 527       46    4       16       173
+## 528       46    4       18       210
+## 529       46    4       20       231
+## 530       46    4       21       238
+## 531       47    4        0        41
+## 532       47    4        2        53
+## 533       47    4        4        66
+## 534       47    4        6        79
+## 535       47    4        8       100
+## 536       47    4       10       123
+## 537       47    4       12       148
+## 538       47    4       14       157
+## 539       47    4       16       168
+## 540       47    4       18       185
+## 541       47    4       20       210
+## 542       47    4       21       205
+## 543       48    4        0        39
+## 544       48    4        2        50
+## 545       48    4        4        62
+## 546       48    4        6        80
+## 547       48    4        8       104
+## 548       48    4       10       125
+## 549       48    4       12       154
+## 550       48    4       14       170
+## 551       48    4       16       222
+## 552       48    4       18       261
+## 553       48    4       20       303
+## 554       48    4       21       322
+## 555       49    4        0        40
+## 556       49    4        2        53
+## 557       49    4        4        64
+## 558       49    4        6        85
+## 559       49    4        8       108
+## 560       49    4       10       128
+## 561       49    4       12       152
+## 562       49    4       14       166
+## 563       49    4       16       184
+## 564       49    4       18       203
+## 565       49    4       20       233
+## 566       49    4       21       237
+## 567       50    4        0        41
+## 568       50    4        2        54
+## 569       50    4        4        67
+## 570       50    4        6        84
+## 571       50    4        8       105
+## 572       50    4       10       122
+## 573       50    4       12       155
+## 574       50    4       14       175
+## 575       50    4       16       205
+## 576       50    4       18       234
+## 577       50    4       20       264
+## 578       50    4       21       264
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chick\_clean}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(chick\_id)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    chick_id
+## 1         1
+## 2         2
+## 3         3
+## 4         4
+## 5         5
+## 6         6
+## 7         7
+## 8         8
+## 9         9
+## 10       10
+## 11       11
+## 12       12
+## 13       13
+## 14       14
+## 15       15
+## 16       16
+## 17       17
+## 18       18
+## 19       19
+## 20       20
+## 21       21
+## 22       22
+## 23       23
+## 24       24
+## 25       25
+## 26       26
+## 27       27
+## 28       28
+## 29       29
+## 30       30
+## 31       31
+## 32       32
+## 33       33
+## 34       34
+## 35       35
+## 36       36
+## 37       37
+## 38       38
+## 39       39
+## 40       40
+## 41       41
+## 42       42
+## 43       43
+## 44       44
+## 45       45
+## 46       46
+## 47       47
+## 48       48
+## 49       49
+## 50       50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chick\_clean}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{weight\_lbs =}\NormalTok{ weight\_gm}\SpecialCharTok{/}\FloatTok{453.6}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(diet,age\_days)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{N=}\FunctionTok{n}\NormalTok{(), }\AttributeTok{mean\_wgt\_gm =} \FunctionTok{mean}\NormalTok{(weight\_gm), }\AttributeTok{mean\_wgt\_lbs =} \FunctionTok{mean}\NormalTok{(weight\_lbs))}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(age\_days}\SpecialCharTok{==}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'diet'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+## # Groups:   diet [4]
+##   diet  age_days     N mean_wgt_gm mean_wgt_lbs
+##   <fct>    <dbl> <int>       <dbl>        <dbl>
+## 1 1           20    17        170.        0.376
+## 2 2           20    10        206.        0.453
+## 3 3           20    10        259.        0.571
+## 4 4           20     9        234.        0.516
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chick\_clean}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(age\_days}\SpecialCharTok{==}\DecValTok{20}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{S}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{weight\_lbs =}\NormalTok{ weight\_gm}\SpecialCharTok{/}\FloatTok{453.6}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(diet)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{N=}\FunctionTok{n}\NormalTok{(), }\AttributeTok{mean\_wgt\_gm =} \FunctionTok{mean}\NormalTok{(weight\_gm), }\AttributeTok{mean\_wgt\_lbs =} \FunctionTok{mean}\NormalTok{(weight\_lbs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars\_modified}\OtherTok{\textless{}{-}}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/mtcars\_fromR\_rownames.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 32 Columns: 12
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (1): rowname
+## dbl (11): mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(mtcars\_modified)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 32
+## Columns: 12
+## $ rowname <chr> "Mazda RX4", "Mazda RX4 Wag", "Datsun 710", "Hornet 4 Drive", ~
+## $ mpg     <dbl> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17~
+## $ cyl     <dbl> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4,~
+## $ disp    <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8,~
+## $ hp      <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, ~
+## $ drat    <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.~
+## $ wt      <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150,~
+## $ qsec    <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90,~
+## $ vs      <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,~
+## $ am      <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0,~
+## $ gear    <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3,~
+## $ carb    <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1,~
+\end{verbatim}
+
+\section{ICMA Sept 23 2024}\label{icma-sept-23-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{billboard\_long}\OtherTok{\textless{}{-}}\NormalTok{billboard}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{starts\_with}\NormalTok{(}\StringTok{"wk"}\NormalTok{), }
+               \AttributeTok{names\_to =} \StringTok{"week"}\NormalTok{, }
+               \AttributeTok{values\_to =} \StringTok{"position"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(billboard\_long)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 24092     5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{billboard\_long}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ week, }\AttributeTok{values\_from =}\NormalTok{ position)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 317 x 79
+##    artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
+##    <chr>      <chr> <date>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 2 Pac      Baby~ 2000-02-26      87    82    72    77    87    94    99    NA
+##  2 2Ge+her    The ~ 2000-09-02      91    87    92    NA    NA    NA    NA    NA
+##  3 3 Doors D~ Kryp~ 2000-04-08      81    70    68    67    66    57    54    53
+##  4 3 Doors D~ Loser 2000-10-21      76    76    72    69    67    65    55    59
+##  5 504 Boyz   Wobb~ 2000-04-15      57    34    25    17    17    31    36    49
+##  6 98^0       Give~ 2000-08-19      51    39    34    26    26    19     2     2
+##  7 A*Teens    Danc~ 2000-07-08      97    97    96    95   100    NA    NA    NA
+##  8 Aaliyah    I Do~ 2000-01-29      84    62    51    41    38    35    35    38
+##  9 Aaliyah    Try ~ 2000-03-18      59    53    38    28    21    18    16    14
+## 10 Adams, Yo~ Open~ 2000-08-26      76    76    74    69    68    67    61    58
+## # i 307 more rows
+## # i 68 more variables: wk9 <dbl>, wk10 <dbl>, wk11 <dbl>, wk12 <dbl>,
+## #   wk13 <dbl>, wk14 <dbl>, wk15 <dbl>, wk16 <dbl>, wk17 <dbl>, wk18 <dbl>,
+## #   wk19 <dbl>, wk20 <dbl>, wk21 <dbl>, wk22 <dbl>, wk23 <dbl>, wk24 <dbl>,
+## #   wk25 <dbl>, wk26 <dbl>, wk27 <dbl>, wk28 <dbl>, wk29 <dbl>, wk30 <dbl>,
+## #   wk31 <dbl>, wk32 <dbl>, wk33 <dbl>, wk34 <dbl>, wk35 <dbl>, wk36 <dbl>,
+## #   wk37 <dbl>, wk38 <dbl>, wk39 <dbl>, wk40 <dbl>, wk41 <dbl>, wk42 <dbl>, ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{billboard\_long}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 24,092 x 5
+##    artist track                   date.entered week  position
+##    <chr>  <chr>                   <date>       <chr>    <dbl>
+##  1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1         87
+##  2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2         82
+##  3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3         72
+##  4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4         77
+##  5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5         87
+##  6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6         94
+##  7 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk7         99
+##  8 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk8         NA
+##  9 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk9         NA
+## 10 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk10        NA
+## # i 24,082 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?pivot\_longer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{billboard}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{starts\_with}\NormalTok{(}\StringTok{"wk"}\NormalTok{),}
+               \AttributeTok{names\_to =} \StringTok{"week"}\NormalTok{,}
+               \AttributeTok{values\_to =} \StringTok{"position"}\NormalTok{,}
+               \AttributeTok{names\_prefix =} \StringTok{"wk"}\NormalTok{,}
+               \AttributeTok{values\_drop\_na =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5,307 x 5
+##    artist  track                   date.entered week  position
+##    <chr>   <chr>                   <date>       <chr>    <dbl>
+##  1 2 Pac   Baby Don't Cry (Keep... 2000-02-26   1           87
+##  2 2 Pac   Baby Don't Cry (Keep... 2000-02-26   2           82
+##  3 2 Pac   Baby Don't Cry (Keep... 2000-02-26   3           72
+##  4 2 Pac   Baby Don't Cry (Keep... 2000-02-26   4           77
+##  5 2 Pac   Baby Don't Cry (Keep... 2000-02-26   5           87
+##  6 2 Pac   Baby Don't Cry (Keep... 2000-02-26   6           94
+##  7 2 Pac   Baby Don't Cry (Keep... 2000-02-26   7           99
+##  8 2Ge+her The Hardest Part Of ... 2000-09-02   1           91
+##  9 2Ge+her The Hardest Part Of ... 2000-09-02   2           87
+## 10 2Ge+her The Hardest Part Of ... 2000-09-02   3           92
+## # i 5,297 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{billboard}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(}\AttributeTok{col =}\NormalTok{ date.entered, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"month"}\NormalTok{, }\StringTok{"day"}\NormalTok{) )}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unite}\NormalTok{(}\AttributeTok{col =} \StringTok{"full\_date"}\NormalTok{, }\FunctionTok{c}\NormalTok{(year, month, day), }\AttributeTok{sep =} \StringTok{"{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 317 x 79
+##    artist  track full_date   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9
+##    <chr>   <chr> <chr>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 2 Pac   Baby~ 2000-02-~    87    82    72    77    87    94    99    NA    NA
+##  2 2Ge+her The ~ 2000-09-~    91    87    92    NA    NA    NA    NA    NA    NA
+##  3 3 Door~ Kryp~ 2000-04-~    81    70    68    67    66    57    54    53    51
+##  4 3 Door~ Loser 2000-10-~    76    76    72    69    67    65    55    59    62
+##  5 504 Bo~ Wobb~ 2000-04-~    57    34    25    17    17    31    36    49    53
+##  6 98^0    Give~ 2000-08-~    51    39    34    26    26    19     2     2     3
+##  7 A*Teens Danc~ 2000-07-~    97    97    96    95   100    NA    NA    NA    NA
+##  8 Aaliyah I Do~ 2000-01-~    84    62    51    41    38    35    35    38    38
+##  9 Aaliyah Try ~ 2000-03-~    59    53    38    28    21    18    16    14    12
+## 10 Adams,~ Open~ 2000-08-~    76    76    74    69    68    67    61    58    57
+## # i 307 more rows
+## # i 67 more variables: wk10 <dbl>, wk11 <dbl>, wk12 <dbl>, wk13 <dbl>,
+## #   wk14 <dbl>, wk15 <dbl>, wk16 <dbl>, wk17 <dbl>, wk18 <dbl>, wk19 <dbl>,
+## #   wk20 <dbl>, wk21 <dbl>, wk22 <dbl>, wk23 <dbl>, wk24 <dbl>, wk25 <dbl>,
+## #   wk26 <dbl>, wk27 <dbl>, wk28 <dbl>, wk29 <dbl>, wk30 <dbl>, wk31 <dbl>,
+## #   wk32 <dbl>, wk33 <dbl>, wk34 <dbl>, wk35 <dbl>, wk36 <dbl>, wk37 <dbl>,
+## #   wk38 <dbl>, wk39 <dbl>, wk40 <dbl>, wk41 <dbl>, wk42 <dbl>, wk43 <dbl>, ...
+\end{verbatim}
+
+\section{ICMA Sept 25 2024}\label{icma-sept-25-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ChickWeight}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{weight,}
+             \AttributeTok{x=}\NormalTok{Time,}
+             \AttributeTok{color =}\NormalTok{ Diet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha=}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#make these a little transparent}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}\CommentTok{\#removing the error bands}
+  \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}\CommentTok{\#using a pre{-}made theme to change the appearance, which we can further modify!}
+  \FunctionTok{facet\_grid}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Diet)}\SpecialCharTok{+} \CommentTok{\#faceting by diet}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"weight in grams"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"days since birth"}\NormalTok{,}
+       \AttributeTok{title =} \StringTok{"Weight over time across diets"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{CogSci412_ICMAs_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"chick\_weightovertime.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Saving 6.5 x 4.5 in image
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+\end{verbatim}
+
+\section{ICMA Oct 7 2024}\label{icma-oct-7-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.integer}\NormalTok{(}\StringTok{"18.123123"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_double}\OtherTok{\textless{}{-}}\FloatTok{12.9}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(my\_double)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "12.9"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{+}\DecValTok{3}\SpecialCharTok{+}\DecValTok{9}\SpecialCharTok{+}\DecValTok{4}\SpecialCharTok{==}\DecValTok{2}\SpecialCharTok{+}\DecValTok{6}\SpecialCharTok{+}\FunctionTok{as.integer}\NormalTok{(}\StringTok{"2.9"}\NormalTok{) }\SpecialCharTok{\&} \ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\section{ICMA Oct 9 2024}\label{icma-oct-9-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{age\_data}\OtherTok{\textless{}{-}}\FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{id, }\SpecialCharTok{\textasciitilde{}}\NormalTok{age,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}
+  \DecValTok{2}\NormalTok{,}\DecValTok{10}\NormalTok{,}
+  \DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}
+  \DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}
+\NormalTok{)}
+\NormalTok{gender\_data}\OtherTok{\textless{}{-}}\FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{id,}\SpecialCharTok{\textasciitilde{}}\NormalTok{gender,}
+  \DecValTok{1}\NormalTok{, }\StringTok{"f"}\NormalTok{,}
+  \DecValTok{2}\NormalTok{, }\StringTok{"m"}\NormalTok{,}
+  \DecValTok{3}\NormalTok{, }\StringTok{"nb"}\NormalTok{,}
+  \DecValTok{4}\NormalTok{, }\StringTok{"m"}\NormalTok{,}
+  \DecValTok{6}\NormalTok{, }\StringTok{"f"}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(gender\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##      id gender
+##   <dbl> <chr> 
+## 1     1 f     
+## 2     2 m     
+## 3     3 nb    
+## 4     4 m     
+## 5     6 f
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{full\_join}\NormalTok{(age\_data,gender\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(id)`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##      id   age gender
+##   <dbl> <dbl> <chr> 
+## 1     1     8 f     
+## 2     2    10 m     
+## 3     3     8 nb    
+## 4     5     9 <NA>  
+## 5     4    NA m     
+## 6     6    NA f
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{right\_join}\NormalTok{(age\_data, gender\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(id)`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 5 x 3
+##      id   age gender
+##   <dbl> <dbl> <chr> 
+## 1     1     8 f     
+## 2     2    10 m     
+## 3     3     8 nb    
+## 4     4    NA m     
+## 5     6    NA f
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{left\_join}\NormalTok{(age\_data, gender\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(id)`
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+##      id   age gender
+##   <dbl> <dbl> <chr> 
+## 1     1     8 f     
+## 2     2    10 m     
+## 3     3     8 nb    
+## 4     5     9 <NA>
+\end{verbatim}
+
+\section{ICMA Oct 16 2024}\label{icma-oct-16-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\DecValTok{2}\SpecialCharTok{+}\DecValTok{3}\NormalTok{)}\SpecialCharTok{/}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(vec[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{+}\NormalTok{vec[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{+}\NormalTok{vec[}\DecValTok{3}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(vec)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{\{}
+  \FunctionTok{print}\NormalTok{(i}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 4
+## [1] 9
+## [1] 16
+## [1] 25
+## [1] 36
+## [1] 49
+## [1] 64
+## [1] 81
+## [1] 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{fave\_number}\OtherTok{\textless{}{-}}\FunctionTok{tribble}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{name, }\SpecialCharTok{\textasciitilde{}}\NormalTok{number,}
+                     \StringTok{"MC"}\NormalTok{, }\DecValTok{8}\NormalTok{,}
+                     \StringTok{"AP"}\NormalTok{, }\DecValTok{9}\NormalTok{,}
+                     \StringTok{"NG"}\NormalTok{, }\DecValTok{12}\NormalTok{,}
+                     \StringTok{"VE"}\NormalTok{, }\DecValTok{6}\NormalTok{,}
+                     \StringTok{"AL"}\NormalTok{, }\DecValTok{17}\NormalTok{,}
+                     \StringTok{"AR"}\NormalTok{, }\DecValTok{3}\NormalTok{,}
+                     \StringTok{"MC"}\NormalTok{, }\DecValTok{7}\NormalTok{,}
+                     \StringTok{"RK"}\NormalTok{, }\DecValTok{8}\NormalTok{,}
+                     \StringTok{"AC"}\NormalTok{, }\DecValTok{4}\NormalTok{,}
+                     \StringTok{"SC"}\NormalTok{, }\DecValTok{21}\NormalTok{,}
+                     \StringTok{"KK"}\NormalTok{, }\DecValTok{16}\NormalTok{,}
+                     \StringTok{"RK"}\NormalTok{, }\DecValTok{28}\NormalTok{,}
+                     \StringTok{"VK"}\NormalTok{, }\DecValTok{17}\NormalTok{,}
+                     \StringTok{"MH"}\NormalTok{, }\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Write a loop to print each fave number
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ fave\_number}\SpecialCharTok{$}\NormalTok{number)}
+\NormalTok{\{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+## [1] 9
+## [1] 12
+## [1] 6
+## [1] 17
+## [1] 3
+## [1] 7
+## [1] 8
+## [1] 4
+## [1] 21
+## [1] 16
+## [1] 28
+## [1] 17
+## [1] 12
+\end{verbatim}
+
+Why is the output different? How are fave\_number{[}``number''{]} and
+fave\_number\$number different?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(fave\_number[[}\StringTok{"number"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(fave\_number}\SpecialCharTok{$}\NormalTok{number)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\section{ICMA Oct 30 2024}\label{icma-oct-30-2024}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

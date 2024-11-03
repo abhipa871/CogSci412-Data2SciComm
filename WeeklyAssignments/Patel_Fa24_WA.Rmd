@@ -1,5 +1,11 @@
 ---
 title: "D2SC: Weekly Assignments"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+      collapsed: false
+      smooth_scroll: false
 author: "Abhi Patel"
 date: "`r Sys.Date()`"
 output: html_notebook

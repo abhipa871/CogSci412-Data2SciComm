@@ -1,21 +1,20 @@
 ---
 title: "D2SC: Weekly Assignments"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-      collapsed: false
-      smooth_scroll: false
 author: "Abhi Patel"
 date: "`r Sys.Date()`"
-output: html_notebook
+output: 
+  html_document:
+    toc: true
+    toc_float: 
+      collapsed: false
+      smooth_scroll: false
+  html_notebook: default
 ---
-# Initial Loading
 
 ```{r}
 library(tidyverse)
 ```
-# Week 1
+# Assignment 1
 
 To be able to figure out how to load a library in R, I went to google and searched up "load libraries in r". Then, I clicked on the top result as the description seemed to be what I was looking for. This was https://bookdown.org/nana/intror/install-and-load-packages.html. This gave me the instructions for both installing packages as well as loading libraries. I used the loading libraries instruction it suggested and ran it in a R code chunk. It ended up working correctly.
 
@@ -275,6 +274,7 @@ Adding error bars to show confidence intervals lets us see how much accuracy var
 Next, setting the y-axis from 0 to 1 keeps the scale honest by matching the proportion values, which prevents any visual tricks that might exaggerate small differences.
 
 ```{r}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
 install.packages("ggdist")
 library(ggdist)
 library(dplyr)
@@ -293,4 +293,33 @@ ggplot(summarized_prob_task, aes(x = condition, y = prop_corr, color = condition
 ```
 The violin plot shows the shape of the distribution revealing any potential clusters in each group. It allows to determine if there is any skewed distributions. I think we are now able to see more distinct shapes/patterns for each different category that we are considering.
 
+# Assignment 8
+```{r}
+prob_task_wrangled<-prob_task%>%
+  group_by(SubID, condition)%>%
+  summarize(rt = round(mean(rt, na.RM = TRUE)),
+            correct = round(mean(correct, na.RM = TRUE),3),
+            .groups = "drop")
 
+```
+```{r}
+ggplot(prob_task_wrangled, 
+       aes(x =rt, y=correct, color=condition))+
+       geom_point()+
+       theme_minimal()+
+       labs(title = "Reaction Time vs Accuracy by Condition (Color)", x = "Reaction Time", y= "Proportion Correct")
+```
+```{r}
+ggplot(prob_task_wrangled, aes(x = rt, y = correct, color = condition)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~condition) +
+  theme_minimal() +
+  labs(
+    title = "Reaction Time vs Accuracy by Condition (Facets)", 
+    x = "Reaction Time", 
+    y = "Proportion Correct"
+  )
+
+```
+<br>**OBSERVATION: **It seems they all roughly have the same slope with respect to accuracy as a function of reaction time, when comparing the lines of best fits, but based on the scattered points themselves, it seems that the *dots_EqSizeRand* condition results in better accuracies at lower reaction times compared to the other ones.

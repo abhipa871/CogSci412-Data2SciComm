@@ -1,0 +1,72 @@
+---
+title: "Patel_WA9"
+author: "Abhi Patel"
+date: "2024-11-08"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(ggdist)
+prob_task<-read_csv("data/MFIndD_probtask.csv")
+```
+```{r, dataprep}
+prob_task<-prob_task%>%
+  separate_wider_delim(cols = left_stim, names = c("left_numerator", "left_other"), delim = "_")%>%
+  separate_wider_delim(cols = right_stim, names = c("right_numerator", "right_other"), delim = "_")%>%
+  mutate(
+    left_numerator = as.numeric(left_numerator),
+    left_other = as.numeric(left_other),
+    right_numerator = as.numeric(right_numerator),
+    right_other = as.numeric(right_other),
+    left_proportion_value = left_numerator/(left_numerator+left_other), 
+    right_proportion_value= right_numerator/(right_numerator+right_other))%>%
+  mutate(larger_numerator = case_when(left_numerator>right_numerator~"Left",
+                                      right_numerator>left_numerator~"Right"))%>%
+  mutate(larger_proportion = case_when(left_proportion_value>right_proportion_value~"Left",
+                                       right_proportion_value>left_proportion_value~"Right"))%>%
+  mutate(num_congruent = case_when(larger_proportion==larger_numerator~TRUE,
+                                   TRUE~FALSE))
+prob_task
+```
+```{r, plot/prep}
+summary_data<-prob_task%>%
+  group_by(SubID, condition, num_congruent)%>%
+  summarize(proportion_correct = mean(correct), .groups = 'drop')
+ggplot(summary_data, aes(x = condition, y = proportion_correct, color = as.factor(num_congruent))) +
+  stat_halfeye() +
+  labs(
+    title = "Proportion Correct by Condition and Congruency",
+    x = "Condition",
+    y = "Proportion Correct",
+    color = "Numerator Congruency"
+  ) +
+  theme_minimal()
+```
+
+## Reseqrch Question
+
+How do people think proportionally with different kinds
+of stimuli?
+
+## Little Research Question
+
+How does Numerator Congruency correlate with Proportion Correct?
+
+## Plot
+```{r, plot}
+summary_data<-prob_task%>%
+  group_by(SubID, condition, num_congruent)%>%
+  summarize(proportion_correct = mean(correct), .groups = 'drop')
+ggplot(summary_data, aes(x = condition, y = proportion_correct, color = as.factor(num_congruent))) +
+  stat_halfeye() +
+  labs(
+    title = "Proportion Correct by Condition and Congruency",
+    x = "Condition",
+    y = "Proportion Correct",
+    color = "Numerator Congruency"
+  ) +
+  theme_minimal()
+```
+

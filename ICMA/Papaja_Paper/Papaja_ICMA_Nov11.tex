@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  man,floatsintext]{apa6}
+  man]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
@@ -184,6 +184,12 @@
 {}{\PatchFailed}
 \makeatother
 \keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
 \usepackage{lineno}
 
 \linenumbers
@@ -267,6 +273,8 @@ We used R (Version 4.4.1; R Core Team, 2024) and the R-packages \emph{dplyr} (Ve
 \includegraphics{Papaja_ICMA_Nov11_files/figure-latex/red-plot-1.pdf}
 \caption{\label{fig:red-plot}Plot 2}
 \end{figure}
+
+There is a significant difference in the average weight of chicks who received Diet 1 compared \(\Delta M = -40.30\), 95\% CI \([-57.62, -22.99]\), \(t(175.92) = -4.59\), \(p < .001\).
 
 \section{Discussion}\label{discussion}
 

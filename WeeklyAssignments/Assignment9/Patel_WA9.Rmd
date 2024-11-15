@@ -60,7 +60,7 @@ summary_data<-prob_task%>%
   group_by(SubID, condition, num_congruent)%>%
   summarize(proportion_correct = mean(correct), .groups = 'drop')
 ggplot(summary_data, aes(x = condition, y = proportion_correct, color = as.factor(num_congruent))) +
-  stat_halfeye() +
+  stat_halfeye(position = position_dodge(width = -1)) +
   labs(
     title = "Proportion Correct by Condition and Congruency",
     x = "Condition",

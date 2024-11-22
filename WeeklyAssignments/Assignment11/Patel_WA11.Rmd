@@ -97,7 +97,7 @@ There were four different conditions that changed what kinds of images participa
 - interleaved dots: blue and orange dots were intermixed.
 The task is shown in figure \@ref(fig:fig2).
 
-```{r fig2, fig.cap="Blob Task",out.width='85%', out.height='51%'}
+```{r fig2, fig.cap="Format for Probability Tasks",out.width='85%', out.height='51%'}
 # Display different format types used in the study
 knitr::include_graphics("data/Probtask_formats.png")
 ```
@@ -105,7 +105,7 @@ knitr::include_graphics("data/Probtask_formats.png")
 
 ## Data Analysis
 
-The data analysis was conducted using the following R packages: dplyr [@R-dplyr] for data wrangling and summarization, and ggplot2 [@R-ggplot2] for data visualization.
+The data analysis was conducted using the following R packages: dplyr [@R-dplyr] for data wrangling and summarization, and ggplot2 [@R-ggplot2] for data visualization. We also utilized tidyverse[@R-tidyverse] in general.
 
 # Results
 

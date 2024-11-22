@@ -1,0 +1,21 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[h]
+  \includegraphics[width=0.8\textwidth, height=0.51\textheight]{data/Probtask_trial.png}
+  \caption{This is a figure.}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=0.6\linewidth,height=0.36\textheight]{Patel_WA11_files/figure-latex/assignment7-plot-1} \caption{Reaction Time and Accuracy by Condition}\label{fig:assignment7-plot}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=0.6\linewidth,height=0.36\textheight]{Patel_WA11_files/figure-latex/assignment8-plot-1} \caption{Reaction Time vs. Accuracy by Condition}\label{fig:assignment8-plot}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=0.6\linewidth,height=0.36\textheight]{Patel_WA11_files/figure-latex/assignment9-plot-1} \caption{Proportion Correct by Format Type and Congruency}\label{fig:assignment9-plot}
+\end{figure*}

@@ -37,7 +37,10 @@ Comparing proportions is sometimes very hard! But, even infants seem to be able 
 # Participants
 ```{r participant}
 # Store total participant count
-participants <- 99
+participants <- probability_task%>%
+  pull(SubID)%>%
+  unique()%>%
+  length()
 ```
 
 A total of  `r participants` adults participated in the study.
@@ -71,18 +74,22 @@ knitr::include_graphics("Patel_WA10_files/data/Probtask_formats.png")
 
 1. Does average performance vary across format type, ignoring all other aspects of the stimuli?
 
-```{r assignment7 plot, out.width='60%', out.height='36%', message=FALSE}
+```{r assignment7-org, message=FALSE}
 # Create plot comparing reaction time and accuracy across conditions
 suppressWarnings(
-  probability_task %>%
-  group_by(condition) %>%
-  summarise(across(c(rt, correct), mean, na.rm = TRUE)) %>%
-  pivot_longer(c(rt, correct)) %>%
-  ggplot(aes(y = value, x = condition)) +
-  geom_point(color = "red") +
-  facet_wrap(~name, scales = "free") +
+  prob_7<-probability_task %>%
+    group_by(condition) %>%
+    summarise(across(c(rt, correct), mean, na.rm = TRUE)) %>%
+    pivot_longer(c(rt, correct))
+)
+```
+```{r assignment7-plot, out.width='60%', out.height = '36%', message=FALSE}
+prob_7%>%
+    ggplot(aes(y = value, x = condition)) +
+    geom_point(color = "red") +
+    facet_wrap(~name, scales = "free") +
   # Improve readability of condition labels
-  scale_x_discrete(labels = c(
+    scale_x_discrete(labels = c(
     "blob_shifted" = "Shifted Blob Task",
     "blob_stacked" = "Stacked Blob Task",
     "dots_EqSizeRand" = "Equal Size Random Dot Task",
@@ -95,20 +102,20 @@ suppressWarnings(
     strip.text = element_text(size = 12),
     axis.text = element_text(size = 10)
   )
-)
-```
 
+```
 Average performance seems to vary. It seems that the tasks with the lower reaction times have higher accuracies.
 
 2. How are reaction time and accuracy related?
-```{r assignment8 plot, out.width='60%', out.height='36%',message=FALSE}
+```{r assignment8-org, out.width='60%', out.height='36%',message=FALSE}
 # Calculate average RT and accuracy per subject and condition
 prob_task_wrangled <- probability_task %>%
   group_by(SubID, condition) %>%
   summarize(rt = round(mean(rt, na.RM = TRUE)),
             correct = round(mean(correct, na.RM = TRUE),3),
             .groups = "drop")
-
+```
+```{r assignment8-plot, out.width='60%', out.height = '36%', message=FALSE}
 # Create scatterplot with regression lines
 ggplot(prob_task_wrangled, aes(x = rt, y = correct, color = condition)) +
   geom_point() +
@@ -133,9 +140,9 @@ Reaction Time and Accuracy seem to be positively correlated with each other.
 
 3. How does numerator congruency interact with format type?
 
-```{r assignment9 plot, out.width='60%', out.height='36%', message=FALSE}
+```{r assignment9-org, out.width='60%', out.height='36%', message=FALSE}
 # Process data to calculate numerator congruency
-probability_task %>%
+probability_task_9<-probability_task %>%
   # Split stimulus information into components
   separate(col = left_stim, into = c("left_numerator", "left_other"), sep = "_") %>%
   separate(col = right_stim, into = c("right_numerator", "right_other"), sep = "_") %>%
@@ -162,8 +169,10 @@ probability_task %>%
   ) %>%
   # Create visualization
   group_by(SubID, condition, num_congruent) %>%
-  summarize(proportion_correct = mean(correct, na.rm = TRUE), .groups = 'drop') %>%
-  ggplot(aes(x = condition, y = proportion_correct, color = as.factor(num_congruent))) +
+  summarize(proportion_correct = mean(correct, na.rm = TRUE), .groups = 'drop')
+```
+```{r assignment9-plot, out.width='60%', out.height='36%', message=FALSE}
+  ggplot(probability_task_9,aes(x = condition, y = proportion_correct, color = as.factor(num_congruent))) +
   stat_halfeye(position = position_dodge(width = -1)) +
   scale_x_discrete(labels = c(
     "blob_shifted" = "Shifted Blob", 

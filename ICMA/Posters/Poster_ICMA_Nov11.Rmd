@@ -85,40 +85,69 @@ To get a better understanding of how to include features like these please refer
 
 # Results
 
-Here you may have some figures to show off, bellow I have made a scatterplot with the infamous Iris dataset and I can even reference to the figure automatically like this, `Figure \@ref(fig:irisfigure)`, Figure \@ref(fig:irisfigure).
+1. Does average performance vary across format type, ignoring all other aspects of the stimuli?
 
-```{r, irisfigure, fig.cap='Here is a caption for the figure. This can be added by using the "fig.cap" option in the r code chunk options, see this [link](https://yihui.name/knitr/options/#plots) from the legend himself, [Yihui Xie](https://twitter.com/xieyihui).', out.width="80%"}
-par(mar=c(2,2,0,1))
-plot(x = iris$Sepal.Length, y = iris$Sepal.Width,
-     col = iris$Species, pch = 19, xlab = "Sepal Length",
-     ylab = "Sepal Width")
+```{r assignment7-org, message=FALSE}
+# Create plot comparing reaction time and accuracy across conditions
+suppressWarnings(
+  prob_7<-probability_task %>%
+    group_by(condition) %>%
+    summarise(across(c(rt, correct), mean, na.rm = TRUE)) %>%
+    pivot_longer(c(rt, correct))
+)
+```
+```{r assignment7-plot, out.width='60%', out.height = '36%', message=FALSE}
+prob_7%>%
+    ggplot(aes(y = value, x = condition)) +
+    geom_point(color = "red") +
+    facet_wrap(~name, scales = "free") +
+  # Improve readability of condition labels
+    scale_x_discrete(labels = c(
+    "blob_shifted" = "Shifted Blob Task",
+    "blob_stacked" = "Stacked Blob Task",
+    "dots_EqSizeRand" = "Equal Size Random Dot Task",
+    "dots_EqSizeSep" = "Equal Size Separated Dot Task"
+  )) +
+  theme_minimal() +
+  labs(title = "Reaction Time and Accuracy by Condition") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text = element_text(size = 12),
+    axis.text = element_text(size = 10)
+  )
+
+```
+Average performance seems to vary. It seems that the tasks with the lower reaction times have higher accuracies.
+
+2. How are reaction time and accuracy related?
+```{r assignment8-org, out.width='60%', out.height='36%',message=FALSE}
+# Calculate average RT and accuracy per subject and condition
+prob_task_wrangled <- probability_task %>%
+  group_by(SubID, condition) %>%
+  summarize(rt = round(mean(rt, na.RM = TRUE)),
+            correct = round(mean(correct, na.RM = TRUE),3),
+            .groups = "drop")
+```
+```{r assignment8-plot, out.width='60%', out.height = '36%', message=FALSE}
+# Create scatterplot with regression lines
+ggplot(prob_task_wrangled, aes(x = rt, y = correct, color = condition)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~condition, labeller = labeller(
+    condition = c(
+      "blob_shifted" = "Shifted Blob Task",
+      "blob_stacked" = "Stacked Blob Task",
+      "dots_EqSizeRand" = "Equal Size Random Dot Task",
+      "dots_EqSizeSep" = "Equal Size Separated Dot Task."
+    )
+  )) +
+  theme_minimal() +
+  labs(
+    title = "Reaction Time vs Accuracy by Condition (Facets)", 
+    x = "Reaction Time", 
+    y = "Proportion Correct"
+  )
 ```
 
-Maybe you want to show off some of that fancy code you spent so much time on to make that figure, well you can do that too! Just use the `echo=TRUE` option in the r code chunk options, Figure \@ref(fig:myprettycode)!
-
-```{r myprettycode, echo=TRUE, fig.cap='Boxplots, so hot right now!', fig.height=6, out.width="80%"}
-#trim whitespace
-par(mar=c(2,2,0,0))
-#plot boxplots
-boxplot(iris$Sepal.Width~iris$Species,
-        col = "#008080", 
-        border = "#0b4545",
-        ylab = "Sepal Width (cm)",
-        xlab = "Species")
-```
-
-How about a neat table of data? See, Table \@ref(tab:iristable):
-
-```{r, iristable}
-knitr::kable(
-  iris[1:15,1:5], format = "html",
-  caption = "A table made with the **knitr::kable** function.",
-  align = "c", col.names = c("Sepal <br> Length",
-                             "Sepal <br> Width",
-                             "Petal <br> Length",
-                             "Petal <br> Width",
-                             "Species"),
-  escape = FALSE)
-```
 
 # References

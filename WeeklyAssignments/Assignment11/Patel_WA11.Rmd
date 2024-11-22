@@ -41,7 +41,7 @@ theme_set(
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    strip.text = element_text(size = 12),
+    strip.text = element_text(size = 6),
     axis.text = element_text(size = 10)
   )
 )

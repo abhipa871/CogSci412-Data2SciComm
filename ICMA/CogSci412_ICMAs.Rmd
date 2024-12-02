@@ -241,3 +241,29 @@ typeof(fave_number$number)
 ```{r}
 library(tidyverse)
 ```
+
+# ICMA Dec 2 2024
+
+```{r}
+months<-c("April", "Dec", "Jan", "Feb", "March")
+```
+
+```{r}
+sort(months)
+```
+```{r}
+months_base<-factor(months,
+               levels = c("Jan", "Feb", "March","April", "May", "June", "July", "Dec"))
+```
+
+```{r}
+months_base
+```
+```{r}
+months_forcats<-fct(months,
+                    levels = c("Jan", "Feb", "March","April", "May", "June", "July"),
+                    na = c("Dec"))
+```
+```{r}
+months_forcats
+```

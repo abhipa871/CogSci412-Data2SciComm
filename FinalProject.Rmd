@@ -1,71 +1,103 @@
 ---
-title             : "Final Project: Imagined Stories vs. Recalled Events"
-shorttitle        : "Imagined Stories vs. Recalled Events"
+title: "Final Project: Imagined Stories vs. Recalled Events"
+shorttitle: "Imagined Stories vs. Recalled Events"
 
 author: 
-  - name          : "Abhi Patel"
-    affiliation   : "1"
+  - name: "Abhi Patel"
+    affiliation: "1"
+
 affiliation:
-  - id            : "1"
-    institution   : "Rutgers University"
-
-
+  - id: "1"
+    institution: "Rutgers University"
 
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  One or two sentences to put the results into a more **general context**.
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
-  <!-- https://tinyurl.com/ybremelq -->
-  
-keywords          : "keywords"
-wordcount         : "X"
+  The idea of utilizing Artificial Intelligence tools has been an interesting emerging field in Cognitive Science. Different types of AI, such as Natural Language Processing, have somewhat of a unique connection to the cognitive science field in terms of their resemblance to neurons in the brain. Although there are massive differences, it is interesting to use a connection like this, however slight, in order to determine insights into Cognitive Science. Specifically, in this project, I aimed to utilize Semantic Analysis to determine variances in emotions between imagined stories (stories that were made up to respond to a prompt) and recalled stories (stories that happened in real life). I wanted to see if there were any differences in the distribution of emotions between the imagined stories and recalled events, as this wasn't discussed in the studies I have reviewed.
 
-bibliography      : "r-references.bib"
+keywords: "Artificial Intelligence, Cognitive Science, Semantic Analysis, Imagined Stories, Recalled Events"
+wordcount: "X"
 
-floatsintext      : no
-linenumbers       : yes
-draft             : no
-mask              : no
+bibliography: "r-references.bib"
 
-figurelist        : no
-tablelist         : no
-footnotelist      : no
+floatsintext: no
+linenumbers: yes
+draft: no
+mask: no
 
-classoption       : "man"
-output            : papaja::apa6_pdf
+figurelist: no
+tablelist: no
+footnotelist: no
+
+classoption: "man"
+output: papaja::apa6_pdf
 ---
 
+
+```{r imports,echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
+reticulate::py_install("transformers", pip = TRUE, force = TRUE)
+reticulate::py_install("torch", pip = TRUE)
+reticulate::py_install("torchvision", pip = TRUE)
+reticulate::py_install("tensorflow", pip = TRUE)
+reticulate::py_install("tf-keras", pip = TRUE)
+```
 ```{r setup, include = FALSE}
 library("papaja")
 r_refs("r-references.bib")
 ```
-```{r libraries/installs, include = FALSE}
-library(huggingfaceR)
-library(tidyverse)
+
+```{r libraries, include = FALSE}
 library(reticulate)
+library(tidyverse)
 library(ggdist)
 ```
 ```{r model}
-Sys.setenv(TF_ENABLE_ONEDNN_OPTS = 0)
-distilBERT <- hf_load_pipeline(
-  model_id = "distilbert-base-uncased-finetuned-sst-2-english", 
-  task = "text-classification"
-   )
+transformers<-import("transformers")
+classifier <- transformers$pipeline("text-classification", model="bhadresh-savani/bert-base-uncased-emotion",truncation=TRUE,max_length=512)
 
+
+
+```
+```{r dataprep, echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
+data<-read_csv("hippoCorpusV2.csv")
+imagined_data <- 
+  data %>% 
+  filter(memType == "imagined")
+recalled_data <- 
+  data %>% 
+  filter(memType == "recalled")
+
+imagined_stories <- imagined_data$story
+recalled_stories <- recalled_data$story
+head(imagined_stories[2])
+```
+```{r helper function for sentiment scores}
+all_emotions <- c("joy", "anger", "sadness", "fear", "surprise", "disgust", "neutral")
+get_emotion_scores <- function(story) {
+  results <- classifier(story)
+  scores <- setNames(rep(0, length(all_emotions)), all_emotions) # Initialize with 0 scores
+  for (result in results) {
+    if (result$label %in% all_emotions) {
+      scores[result$label] <- result$score
+    }
+  }
+  return(scores)
+}
+
+
+```
+```{r tibble creation}
+imagined_emotions <- lapply(imagined_stories, get_emotion_scores)
+recalled_emotions <- lapply(recalled_stories, get_emotion_scores)
 ```
 ```{r}
-emo <- hf_load_dataset(
-  dataset = "emo", 
-  split = "test"
-  )
-
-
+convert_to_tibble <- function(emotion_list, type) {
+  do.call(rbind, lapply(seq_along(emotion_list), function(i) {
+    data.frame(story_id = i, type = type, as.list(emotion_list[[i]]))
+  }))
+}
+imagined_df <- convert_to_tibble(imagined_emotions, "Imagined")
+recalled_df <- convert_to_tibble(recalled_emotions, "Recalled")
 ```
+
 
 
 ```{r analysis-preferences}
@@ -77,21 +109,84 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+We utilized the Hippocorpus dataset[@hippocorpus_dataset] created in [@sap-etal-2020-recollection], a paper discussing the differences between imagined stories and recalled events in terms of various factors such as narrative structure, semantic memory, etc. The authors gathered recalled events and imagined stories from a crowdsourcing website. There were two major groups of subjects. The first group of subjects were asked to recall a story that happened to them recently that was memorable. The second group of subjects were asked to create a story based off a random summary of a event that was discussed by one of the participants of the first group. This served as the major basis of the study. Various other factors were included such as emotional draining(how emotionally draining was it to write the story), time to complete the task, how distracted were you when writing it, etc. I perform semantic analysis on the imagined stories and recalled events using transformers library from python. To be able to run it in R, I have to use [@reticulate]. Then, I am able to do the equivalent python functions in R. The model that I am using to run semantic analysis on the texts is specifically [@bert_emotion_analysis]. 
 
-## Participants
+## Research Questions
 
-## Material
+1. **Using BERT-based sentiment analysis, how does the distribution of sentiment scores differ between imagined stories and recalled events?**  
+This will be answered by isolating the corresponding text, and pushing the texts to the model for emotion classification. We will compared confidence scores as well as the raw distribution to bolster this answer.
 
-## Procedure
+2. **What is the difference between imagined stories and recalled events in terms of amount of time taken to write vs how emotionally draining it was to write?**
+We will plot two trends with the y-axis consisting of the Amount of time taken to write and x-axis representing the emotional draining on the likert scale. We will be able to understand two relationships from this. One of the general trend between the x and y variables, as well as the comparison between imagined stories and recalled events.
 
-## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
+## Data Analysis, Interpretation, and Results
+We used `r cite_r("r-references.bib")` for all our analyses. 
 
+First look at the "Comparison of Confidence for Imagined and Recalled Emotions" plot which is Fig \@ref(fig:plot1).
+This graph showcases the confidence scores for each of the predictions from the models for all the text of all samples of imagined stories as well as recalled events per each emotion. The confidence scores are the raw outputs from the model indicating how confident it is in its prediction of the emotion. Hence, I thought this is an important statistic to see if there would be any fluctuation in confidence of predictions in emotions between imagined stories and recalled events, as this could point our eyes to other explanatory factors. These explanatory factors can include things like many "conflicting" words, clunky sentences, etc. The model itself being less confident about predictions in different emotions can be a key sign of difference. In the plot, you can see that the distributions however are roughly equivalent between the two. The two major differences could be with respect to "Surprised" and "Anger" emotions, where imagined stories had a slightly higher median confidence among "Surprised", and recalled events had a slightly higher median confidence among "Anger". This could potentially suggest that true "surprise" is better portrayed when its manufactured as it could be a harder emotion to convey, whereas anger can easily be portrayed from fresh memory I think this is interesting.
+```{r plot1,fig.cap="plot1", echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
+emotion_data <- rbind(imagined_df, recalled_df)
+long_data <- emotion_data %>%
+  pivot_longer(cols = joy:neutral,  
+               names_to = "emotion",  
+               values_to = "predicted_value") %>%
+  filter(predicted_value > 0) 
+print(long_data)
+head(emotion_data)
+long_data$type <- factor(long_data$type, levels = c("Imagined", "Recalled"))
+ggplot(long_data, aes(x = emotion, y = predicted_value, fill = type)) +
+  geom_boxplot() +
+  labs(
+    title = "Comparison of Confidence for Imagined and Recalled Emotions",
+    x = "Emotion",
+    y = "Predicted Value"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1), 
+    legend.title = element_blank()  
+  )
 
-# Results
+```
+Second, look at the "Total Count of Emotions for Imagined vs. Recalled" plot which is Fig \@ref(fig:plot2).
+This graph showcases the raw counts for the number of samples per emotion for all samples of imagined stories as well as recalled events. The reason I wanted to display this is because I wanted to see if the actual distribution of emotions was different between the two. As you can see in the plot, it is roughly equivalent across the board. I don't see anything in this distribution that tells me there is any differences of note. This could be due to different factors. It can be that the finetuned model that I used is already trained on a very robust dataset, and both the imagined stories and recalled events are very representative of the types of responses in the dataset. Perhaps, this can also suggest that in the model's eyes, the content in terms of labelled emotions is very similar. Based on the Plot 1 analysis, we know this may not 100% be the case, but it could make sense since the Natural Language Processing models don't think the same way as humans do and do not consist of general intelligence. Therefore, I suspect that the factors that the model consists regarding emotion are not nearly as advanced as humans'.
+```{r plot2, fig.cap="plot2", echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
+emotion_counts <- long_data %>%
+  group_by(emotion, type) %>%
+  summarise(count = n(), .groups = 'drop')
 
-# Discussion
+emotion_counts$type <- factor(emotion_counts$type, levels = c("Imagined", "Recalled"))
+
+ggplot(emotion_counts, aes(x = emotion, y = count, fill = type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Total Count of Emotions for Imagined vs. Recalled",
+    x = "Emotion",
+    y = "Total Count"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()  
+  )
+```
+Finally, this plot depicts "Average Work Time vs. Emotional Impact (Draining) by Memory Type" as shown in is Fig \@ref(fig:plot3). Emotional draining refers to how drained emotionally the participants were when they wrote the stories/events. This was measured on a Likert Scale from 1-5 based on least to greater emotional draining. This along with time per task was given as data in the dataset, and is not required to use any models. On the plot, you see two different trends:one for Imagined Stories and one for Recalled Events. Since I separated these two out as compared to the initial iteration on the presentation, I see a better trend. It seems for both, the more emotionally draining the event/story is, the more time it takes to write. This makes intuitive sense as emotions might distract you/slow you down in the task. It also seems that Imagined stories take more time to write overall than recalled events across the board. This seems to make sense as when creating a "story" the writer may try to think of additional factors such as if it has flow/narrative sense, which might not necessarily be the case with recalled events. This is because with recalled events, the writer experienced it first hand, and probably has a better idea of how to display it.
+```{r plot3, fig.cap="plot3", echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
+grouped_data <- data %>%
+  filter(memType %in% c("imagined", "recalled")) %>%
+  group_by(draining, memType) %>%  # Group by both 'draining' and 'memType'
+  summarise(mean_WorkTimeInSeconds = mean(WorkTimeInSeconds, na.rm = TRUE), .groups = "drop")
+
+grouped_data$memType <- factor(grouped_data$memType, levels = c("imagined", "recalled"))
+ggplot(grouped_data, aes(x = draining, y = mean_WorkTimeInSeconds, color = memType, group = memType)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average Work Time vs. Emotional Impact (Draining) by Memory Type",
+       x = "Emotional Impact (Draining)",
+       y = "Average Work Time (Seconds)",
+       color = "Memory Type") +
+  theme_minimal()
+```
 
 
 \newpage

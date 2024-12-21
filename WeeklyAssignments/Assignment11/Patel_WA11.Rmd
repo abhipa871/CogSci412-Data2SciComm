@@ -92,7 +92,7 @@ knitr::include_graphics("data/Probtask_trial.png")
 There were four different conditions that changed what kinds of images participants saw:
 
 - divided blobs: blue and orange were entirely separate.
-- segmented blobs: blue and orange could be part blue and part orange.
+- segmented blobs: bluwh e and orange could be part blue and part orange.
 - separated dots: blue and orange dots were on opposite sides of the image.
 - interleaved dots: blue and orange dots were intermixed.
 The task is shown in figure \@ref(fig:fig2).
@@ -103,7 +103,7 @@ knitr::include_graphics("data/Probtask_formats.png")
 ```
 
 
-## Data Analysis
+## Data Analysis 
 
 The data analysis was conducted using the following R packages: dplyr [@R-dplyr] for data wrangling and summarization, and ggplot2 [@R-ggplot2] for data visualization. We also utilized tidyverse[@R-tidyverse] in general.
 

@@ -73,7 +73,7 @@ head(imagined_stories[2])
 all_emotions <- c("joy", "anger", "sadness", "fear", "surprise", "disgust", "neutral")
 get_emotion_scores <- function(story) {
   results <- classifier(story)
-  scores <- setNames(rep(0, length(all_emotions)), all_emotions) # Initialize with 0 scores
+  scores <- setNames(rep(0, length(all_emotions)), all_emotions)
   for (result in results) {
     if (result$label %in% all_emotions) {
       scores[result$label] <- result$score
@@ -174,7 +174,7 @@ Finally, this plot depicts "Average Work Time vs. Emotional Impact (Draining) by
 ```{r plot3, fig.cap="plot3", echo = FALSE, message = FALSE, results = 'hide', warning=FALSE}
 grouped_data <- data %>%
   filter(memType %in% c("imagined", "recalled")) %>%
-  group_by(draining, memType) %>%  # Group by both 'draining' and 'memType'
+  group_by(draining, memType) %>%
   summarise(mean_WorkTimeInSeconds = mean(WorkTimeInSeconds, na.rm = TRUE), .groups = "drop")
 
 grouped_data$memType <- factor(grouped_data$memType, levels = c("imagined", "recalled"))
